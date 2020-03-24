@@ -1,0 +1,16 @@
+
+page {
+    background: #f3f2f7;
+}
+.community-list-view .input-group{  height: 100rpx;line-height: 100rpx;border-bottom: 1px solid #dddddd; }
+
+.community-list-view .input-group .input-group-label{  line-height: inherit; min-width: 200rpx;}
+.community-list-view .input-group-list{padding: 20rpx 30rpx 40rpx 30rpx; background: #fff;}
+.community-list-view .input-group-list .input-group:last-child:after{ display: none; }
+.community-btn-view{ padding: 60rpx 30rpx 0 30rpx;}
+.group-section-box{padding: 28rpx 30rpx 28rpx 30rpx;}
+.group-section-boxp{padding: 20rpx 30rpx 20rpx 30rpx;}
+.active-group-icon{ width: 120rpx; height: 120rpx; line-height: 120rpx;border-radius: 50%; }
+.active-group-label-tit{ height: 55rpx; line-height: 65rpx;}
+.active-group-label-desc{height: 50rpx; line-height: 60rpx; }
+.nav-icon-class{height:100%;display:flex;align-items:center;justify-content:flex-end;}

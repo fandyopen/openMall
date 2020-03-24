@@ -1,0 +1,94 @@
+<include src="/components/common/common"></include>
+<view wx:if='{{!isSelect}}' class="community-view community-member">
+  <!--头部-->
+  <view class='community-header'>
+    <view class='community-header-tit fs42 flex'>
+      <view class='flex-item-1'>社圈成员
+        <text class='gray fs28'>/{{clenght}}</text>
+      </view>
+      <view class='flex-item-1 v-tr'>
+
+        <navigator wx:if="{{curUserData.role_type!=0}}" url="/active/c/c?cid={{cid}}&i={{curUserData.user_id}}&from=member" hover-class="none">
+          <icon class='iconfont icon-yaoqing fs36'></icon>
+        </navigator>
+
+        <!-- <icon class='iconfont icon-yaoqing fs36'></icon> -->
+      </view>
+    </view>
+    <view class='gray fs28' style='padding-top:0rpx'>
+     点击头像可设置管理员</view>
+
+  </view>
+  <!-- <scroll-view class="communitymember-scroll-view" scroll-y="false"> -->
+  <view wx:if="{{initload==1}}">
+    <view class='v-tc  pt80'>
+      <view class="weui-loading"></view>加载中...</view>
+  </view>
+  <view class='community-member-list communitymember-scroll-view'>
+    <block wx:for="{{memberlist}}" wx:for-index="idx" wx:for-item="item">
+      <view class='mb40 community-list-sec member-sec community-detail-header-sec flex pt30'>
+
+        <view bindtap='setAdminFn' data-uid='{{item.user_id}}' class='community-v flex-item-0' style='width:80rpx;'>
+          <image class="community-photo" mode="aspectFill" src="{{item.avatar}}"></image>
+        </view>
+        <view class='community-v community-v-txt ml20 flex-item-1 pt10 pb30'>
+          <text class='{{item.role_type==0?"greenBg":"yellowBg"}}  fff member-label fs24'>{{item.role_type==0?'成员':item.role_type==1?'管理员':item.role_type==2?'审核员':item.role_type==3?'创建者':'无'}}</text>
+          <text class='pl20 fs32'>{{item.nickname}}</text>
+        </view>
+
+      </view>
+    </block>
+    <view class='v-tc pb30 pt30' wx:if="{{loadingstutas!=0&&memberlist.length>7}}">
+        <view wx:if="{{loadingstutas!=2}}" class="weui-loading"></view>{{loadingstutas==1?"加载更多...":"没有更多了..."}}
+        </view>
+  
+  </view>
+  <!-- </scroll-view> -->
+  <view class='community-btn-view v-tc' wx:if="{{memberlist.length>0}}">
+
+    <view bindtap='goSearch' class='btn-red sc-btn f333 v-tc'>
+      <icon class='iconfont icon-chazhao pr20'></icon>筛选</view>
+  </view>
+
+  <!-- <include src="/commons/com-footer/com-footer"></include> -->
+</view>
+<view wx:else class="community-view community-member">
+  <view class="grayBg search_box">
+    <view class='searchview flex'>
+      <input placeholder-style="font-size:28rpx" class='searchinput'  bindinput="wxSearchInput" bindconfirm="bindconfirm" placeholder="请输入关键字" />
+       <icon class="searchcion" size='20' type='search' bindtap='wxSearchBtn'></icon>
+    </view>
+  </view>
+  <!-- <scroll-view class="communitymember-scroll-view mt20" scroll-y="false"> -->
+  <view wx:if="{{initload==1}}">
+    <view class='v-tc  pt80'>
+      <view class="weui-loading"></view>加载中...</view>
+  </view>
+  <view class='communitymember-scroll-view community-member-list'>
+    <block wx:for="{{memberlist}}" wx:for-index="idx" wx:for-item="item">
+      <view class='mb40 community-list-sec member-sec community-detail-header-sec flex pt30'>
+
+        <view bindtap='setAdminFn' data-uid='{{item.user_id}}' class='community-v flex-item-0' style='width:80rpx;'>
+          <image class="community-photo" mode="aspectFill" src="{{item.avatar}}"></image>
+        </view>
+        <view class='community-v community-v-txt ml20 flex-item-1 pt10 pb30'>
+          <text class='{{item.role_type==0?"greenBg":"yellowBg"}}  fff member-label fs24'>{{item.role_type==0?'普通成员':item.role_type==1?'管理员':item.role_type==2?'审核员':item.role_type==3?'创建者':'无'}}</text>
+          <text class='pl20 fs32'>{{item.nickname}}</text>
+        </view>
+
+      </view>
+    </block>
+    <view class='v-tc pb30 pt30' wx:if="{{loadingstutas!=0&&memberlist.length>7}}">
+      <view wx:if="{{loadingstutas!=2}}" class="weui-loading"></view>{{loadingstutas==1?"加载更多...":"没有更多了..."}}
+    </view>
+  </view>
+  <!-- </scroll-view> -->
+  <view bindtap='closeSearch' class='community-btn-view '>
+
+    <view class='f333 scs-btn v-tc'>
+      <icon class='iconfont icon-x '></icon>
+    </view>
+  </view>
+  <!-- <import src="/commons/wxSearch/wxSearch.wxml"/>
+<template is="wxSearch" data="{{wxSearchData}}"/> -->
+</view>

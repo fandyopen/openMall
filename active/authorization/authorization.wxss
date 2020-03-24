@@ -1,0 +1,4 @@
+page {
+    background: #f3f2f7;
+}
+.authorization{ padding: 50rpx 30rpx;}

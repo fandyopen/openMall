@@ -1,0 +1,62 @@
+
+page {
+    background: #f3f2f7;  position: relative;
+}
+button {
+  
+
+}
+radio {
+  transform:scale(0.7);
+}
+.community-list-view .input-group{  height: 100rpx;line-height: 100rpx;border-bottom: 1px solid #dddddd; }
+
+.community-list-view .input-group .input-group-label{  line-height: inherit; min-width: 200rpx;}
+.community-list-view .input-group-list{padding: 20rpx 30rpx 40rpx 30rpx; background: #fff;}
+.community-list-view .input-group-list .input-group:last-child:after{ display: none; }
+.community-btn-view{ padding: 25rpx 30rpx 30rpx 30rpx; margin-bottom: 25rpx}
+.x-input{ height: auto; display: inline-block; width: 99%; font-size: 28rpx; 	background-color: #ffffff; 	border: none; border-radius: 6px;}
+.community-btn-view .btn-green{ background-color:#3caf62; color: #fff;
+height: 87rpx; padding: 0; line-height: 87rpx; font-size: 30rpx;}
+.group-section-box{padding: 0rpx 30rpx 0rpx 30rpx;height: 88rpx;line-height: 88rpx;}
+.group-section-boxp{padding: 20rpx 30rpx 20rpx 30rpx;}
+.group-section-tit{	font-size: 36rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;}
+  .community-label-se .community-label{ margin-right: 15rpx; margin-top: 15rpx  }
+  .lx-box{ padding: 0 10rpx; border:1px solid #ddd; border-radius: 10rpx;}
+  .group-section-i{}
+  .bz-view{height: 80rpx;line-height: 80rpx; margin-bottom: 20rpx; margin-top: 20rpx;}
+  .x-input1{ 	
+    
+	height: 80rpx;
+	border-radius: 6px;  padding: 0 10rpx; }
+  .pick-start{ height: 80rpx;line-height: 80rpx; }
+  .radio-group{ width: 100%;}
+  .picker{ width: 100%;height: 80rpx;line-height: 80rpx; text-align: right;}
+  .driver_radio{width: 250rpx; height: 84rpx; line-height: 80rpx; padding: 0 20rpx; 	border-radius: 60rpx;text-align: center;}
+  .radio-default-btn{ border: solid 1px #dddddd;}
+  .radio-active-btn{ border: solid 1px #3caf62; color: #3caf62; }
+  .mzsmModelMast{position: fixed; width: 100%; height: 100%; top: 0;
+    background-color: rgba(0, 0, 0, .50); z-index: 9;}
+  .mzsmModel{ position: fixed;  border-radius: 10rpx;   left: 50%; width: 90%; height: 85%;  background: #fff; padding: 20rpx 40rpx;
+    top: 70rpx;
+    z-index: 10;
+    transform: translate3d(-50%, 0, 0);}
+    .mzsmModelTit{ padding: 20rpx; text-align: center; font-size: 36rpx}
+    .mzsmModelCont{ font-size: 28rpx; padding: 20rpx; height: 80%; }
+    .mzsmModelCont .tx{ line-height: 40rpx; padding-bottom: 10rpx;}
+    .mzqd button{ background-color:#3caf62; color: #fff;
+height: 87rpx; padding: 0; line-height: 87rpx; font-size: 30rpx; width: 40%;}
+
+   form button{
+     padding: 0;
+   }
+
+   form button::after{
+     content: '';
+     display: none;
+   }
+

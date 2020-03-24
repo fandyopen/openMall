@@ -1,0 +1,215 @@
+<include src="/components/common/common"></include>
+<view  wx:if="{{!_loading}}" data-s="{{joininfo.seat_number}}" class='community-list-view join-active-view'>
+ 
+<icon wx:if="{{isFull}}" class='my_icon iconfont icon-yiguoqi red'></icon>
+  <view class='group-section-boxp white fs32 f333'>
+    <view class='flex line-gray pb10'>
+
+      <view class='photo-sec flex flex-y-center'>
+        <view class='photo-v flex-item-0'>
+          <image class="pwh120 pradius" mode="aspectFill" src="{{masterInfo.avatar}}"></image>
+        </view>
+        <view class='photo-v pl20 flex-item-1'>
+          <view class='join-v join-active-tit fs32 f000' data-a="{{isFull}}">{{masterInfo.nickname}} </view>
+          <view wx:if="{{masterInfo.is_passenger==0&&is_join}}" class='join-v join-active-cp fs28'>{{joininfo.car_number}} </view>
+          <!-- <view class='join-v join-active-descr fs24 f666'>余额：1200.00</view> -->
+        </view>
+        <view wx:if="{{is_join}}" bindtap='callphoneFn' data-phone="{{masterInfo.tel}}" class='flex-item-0 join-active-call flex-align pl20 pr20'>
+          <icon class='iconfont icon-dianhua fs60'></icon>
+        </view>
+      </view>
+
+
+
+    </view>
+    <view class='join-sj-info pall'>
+      <view class='join-sj-info-1 flex'>
+        <view class='join-sj-l flex-item-1 fs32' data-aa='{{masterInfo.is_passenger}}'>
+          <icon class='iconfont icon-siji-'></icon>
+          <text class='f000'>【{{masterInfo.is_passenger==1?"我是乘客":"我是司机"}}】</text>
+          <text  wx-if="{{masterInfo.is_passenger==0}}" class='f000'>打赏:<text class="fs32 pl10 pr10">{{joininfo.price*1}}</text>元</text>
+        </view>
+        <view class='join-sj-r flex-item-0 fs32 flex-align'>
+          <icon class='iconfont icon-zuowei fs36 '></icon>
+          <text class='fs24 pt10'>共{{masterInfo.count_passenger}}人</text>
+        </view>
+   
+      </view>
+           <view class='join-sj-bz f666 pt10 fs28 pl40'>备注：{{masterInfo.mark?masterInfo.mark:"暂无备注"}}</view>
+      <view class='join-sj-info-1 '>
+        <view class='join-sj-l  fs32'>
+          <icon class='iconfont icon-mudedi '></icon>
+          <text class='f000'>【目的地】</text>
+        </view>
+
+        <view class='join-sj-bz f666 pt10 fs28 pl40'>{{joininfo.end_place}}</view>
+      </view>
+      <view class='join-sj-info-1 '>
+        <view class='join-sj-l  fs32'>
+          <icon class='iconfont icon-chufa'></icon>
+          <text class='f000'>【出发地】</text>
+        </view>
+
+        <view class='join-sj-bz f666 pt10 fs28 pl40'>{{joininfo.start_place}}</view>
+      </view>
+
+      <view class='join-sj-info-1 '>
+        <view class='join-sj-l  fs32'>
+          <icon class='iconfont icon-shijian1'></icon>
+          <text class='f000'>【最早出发时间-最晚出发时间】</text>
+        </view>
+
+        <view class='join-sj-bz f666 pt10 fs28 pl40'>{{joininfo.earliest_time}} － {{joininfo.latest_time}}</view>
+      </view>
+    </view>
+
+
+  </view>
+
+  <form data-j="{{is_join}}" bindsubmit='joinActive' reportSubmit="true">
+    <view  wx:if="{{!is_join&&!isFull}}" class='group-section-boxp white mt20   fs32 f333'>
+      <view  class='flex line-gray pb10'>
+        <view class='fs32 pb10 pl30 f000'>填写资料
+          <text class='fs24 f999'>( <icon class='iconfont icon-beizhuicon'></icon>已经有<text class='fs28 pl5 pr5 yellow'>{{master_count}}</text>名司机,<text class='fs28 pl5 pr5 yellow'>{{passenger_count}}</text>名乘客,共<text class='fs28 pl5 pr5 yellow'>{{joininfo.total_seat_number}}</text>个座位)
+          </text>
+        </view>
+      </view>
+      <view class='white zl-box pall'>
+        <view class='group-section-i  line-gray '>
+          <radio-group class="radio-group flex-align f666 fs28" bindchange="radioChange" style='height:80rpx;lline-height:80rpx;justify-content:flex-start;'>
+          
+            <radio style='' class='flex fs36' name="is_passenger" value="1" checked="ture" />
+             <icon class='iconfont icon-chengke flex mr10'></icon><text>我是乘客</text>
+           <radio wx:if="{{joininfo.isDoDriver==1}}" style='' name="is_passenger" class='ml60 fs36 flex' value="0" />
+            <icon wx:if="{{joininfo.isDoDriver==1}}" class='iconfont icon-siji- flex mr10'></icon><text wx:if="{{joininfo.isDoDriver==1}}">我是司机</text>
+          </radio-group>
+        </view>
+        <view class='bz-view flex fs28 '>
+          <text>我有</text>
+          <input class='x-input flex-item-0' style='width:150rpx;	' name="count" placeholder=''></input>
+          人拼车
+        </view>
+        <view class='bz-view flex fs28 '>
+          <text>备注</text>
+          <input class='x-input flex-item-1' name="mark" placeholder='请输入你的备注'></input>
+
+        </view>
+
+        <view class='group-section-i  fs28 flex  '>
+          <view class="input-section flex-item-1 flex f999">
+            <text class='red fs28'>*</text>只有成功拼团后才能看到其他成员的电话
+
+
+          </view>
+
+        </view>
+          <view class='bz-view  v-tc' bindtap=''>
+        <radio-group class="radio-group" bindchange="radioChange1">
+          <label class="radio">
+            <radio checked='{{mzsm}}' />
+            <text>我已阅读并同意</text>
+            <text class='green' catchtap='showSm'>《拼车平台声明》</text>
+          </label>
+        </radio-group>
+
+      </view>
+      </view>
+
+
+    </view>
+    <view wx:if="{{is_join}}"  class='group-section-boxp white mt20  fs32 f333'>
+      <view class='flex line-gray pb10'>
+        <view class='fs32 pb10 pl30 f000'>成员列表</view>
+      </view>
+      <view class='white zl-box pall' style='padding-top:0;'>
+        <block wx:for="{{joininfo.joinList}}" wx:for-index="idx" wx:for-item="item">
+        <view class='photo-sec flex line-gray photo-sec-me'>
+          <view class='photo-v flex-item-0'>
+            <image class="pwh120 pradius" mode="aspectFill" src="{{item.avatar}}"></image>
+          </view>
+          <view class='photo-v pl20 flex-item-1 ellipsis' style='width:80%;'>
+            <view class='join-v join-active-tit fs32 f000'>{{item.nickname}} </view>
+            <view class='join-v  fs28'>【{{item.is_passenger==1?"我是乘客":"我是司机"}}】共{{item.count_passenger}}人 </view>
+            <view class='join-v join-active-descr fs24 f666 ellipsis'>{{item.mark}}</view>
+          </view>
+       <view  wx:if="{{is_join}}" class='join-active-memb-group flex-item-1'>
+          <icon  wx:if="{{user_info.id!=item.uid&&(role!=3||item.is_passenger==0||item.is_master==1)}}" bindtap='callphoneFn'  data-phone="{{item.tel}}"  class='iconfont icon-dianhua fs40 mr30'></icon>
+          <text data-a="{{user_info.id}}" data-c="{{item.uid}}" wx:if="{{(user_info.id!=item.uid&&(role==1||role==2))||(user_info.id==item.uid)&&(role==0||role==3)}}" bindtap='delMembrn'   class='fs28' data-uid="{{item.uid}}">{{user_info.id==item.uid?"退出":"移除"}}</text>
+          <!-- {{(item.is_master==0&&user_info.id==item.uid)||(curreUidCrea&&item.is_master==0&&user_info.id!=item.uid)}} -->
+        </view>
+        </view>
+     
+        </block>
+      </view>
+    </view>
+    <!-- ///////////邀请朋友 -->
+    <view class='mt20' wx:if="{{is_join&&!isFull}}">
+    <button  bindtap='inviteFn' class='btn-green u-publish-btn'>邀请好友加入</button>
+    </view>
+    <view wx:if="{{!is_join&&!isFull}}" class='community-btn-view'>
+      <button hover-class="none" form-type='submit' >
+      <form   bindsubmit='joinActive' reportSubmit="true">
+      <button  hover-class="none" form-type='submit' >
+      <form  bindsubmit='joinActive' reportSubmit="true">
+        <button hover-class="none" form-type='submit' >
+        <form  bindsubmit='joinActive' reportSubmit="true">
+      <button hover-class="none" disabled="{{disabled}}" form-type='submit' class='btn-green u-publish-btn'>确认加入</button>
+        </form>
+        </button>
+      </form>
+      </button>
+      </form>
+      </button>
+    </view>
+  </form>
+    <!-- <button  class='c-d-s c-d-s2' wx:if="{{curreUidCrea&&atype==1}}" style=' padding-left: 11rpx;padding-top:0' open-type="share">
+        <icon class='c-d-i iconfont icon-fenxiang'></icon>
+      </button>  -->
+
+      <!-- <comment bind:commentevent="sumbitComment" activeid="{{id}}" cid="{{cid}}" activeInfo="{{joininfo}}"  commentList="{{commentInfo.list}}" curreUidCrea="{{curreUidCrea}}" initload="{{initload}}" loadingstutas="{{loadingstutas}}"  ></comment> -->
+
+
+</view>
+<view wx:if="{{showMz}}" catchtouchmove="return" class='mzsmModelMast'>
+</view>
+<view wx:if="{{showMz}}" catchtouchmove="return" class='mzsmModel'>
+<view class='mzsmModelTit line-gray'>拼车免责声明</view>
+<view class='mzsmModelCont'>
+<scroll-view scroll-y  style="height:100%;" >
+<view class='tx'>
+1、	一切小程序用户在浏览使用小程序时均被视为已经仔细阅读本免责声明并完全同意。凡以任何方式直接、间接使用本小程序资料者，均被视为自愿接受本小程序相关声明和用户服务协议的约束
+</view>
+<view class='tx'>
+2、	小程序转载的内容并不代表小程序创建方之意见与观点，也不意味着本小程序赞同其观点或证实其内容的真实性
+</view>
+<view class='tx'>
+3、	小程序转载、发布的文字、图片等信息资料均由小程序用户提供，其真实性、准确性和合法性由信息发布人负责。小程序不提供任何保证，并不承担任何法律责任
+</view>
+<view class='tx'>
+4、	小程序转载、发布的文字、图片等信息资料，如果侵犯了第三方的知识产权或其他权利，责任由作者或转载者本人承担，本小程序对此不承担责任
+</view>
+<view class='tx'>
+5、	本小程序不保证为向用户提供便利而设置添加的功能与链接的准确性与完整性，同时，对于功能与链接指向的不由小程序实际控制的任何页面与信息上的内容，小程序不承担任何责任
+</view>
+<view class='tx'>
+6、	用户明确并同意其使用本小程序所存在的风险将由其本人承担；因用户使用本小程序而产生的一切后果也由其本人承担，小程序对此不承担任何责任
+</view>
+<view class='tx'>
+7、	除本小程序注明的服务条款外，其他因不当使用本小程序而导致的任何意外、疏忽、合约毁坏、诽谤、版权或其他知识产权侵犯及其所造成的任何损失，本小程序概不负责，亦不承担任何法律责任
+</view>
+<view class='tx'>
+8、	对应因不可抗力或黑客攻击、通讯线路中断等等本小程序不能控制的原因造成的网络服务中断或其他缺陷，导致用户不能正常使用小程序，本小程序不承担任何责任，但将尽力减少因此给用户造成的损失或影响。
+</view>
+<view class='tx'>
+9、	本声明未涉及的问题请参见国家有关法律法规，当本声明与国家有关法律法规冲突时，以国家法律法规为准。
+</view>
+<view class='tx'>
+10、	本小程序严格遵守微信公众平台小程序运营规范，并遵守当地法律监管。
+</view>
+<view class='tx'>
+11、	本网站相关声明版权及其修改权、更新权和最终解释权均属本小程序所有。
+</view>
+</scroll-view>
+</view>
+<view class="pt20 pb20 mzqd"><button bindtap='clearSm' plain='true' class='btn-green'>确定</button></view>
+</view>

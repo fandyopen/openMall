@@ -1,0 +1,13 @@
+<!--components/banner/banner.wxml-->
+<view>
+    <view class="banner--banner">
+        <swiper wx:if="{{banner_list.length>0}}" circular="{{circular}}" class="banner" indicator-color="#868686" indicator-active-color="#fff" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <swiper-item wx:for="{{banner_list}}">
+                <navigator bindtap="navigatorClick" data-open_type="{{item.open_type}}" data-url="{{item.page_url}}" openType="{{item.open_type?item.open_type:'navigator'}}" url="{{item.page_url}}">
+                    <image style='width:100%; ' class="slide-image {{loaded?'imageAn':''}}"   bindload="imageLoad" mode="aspectFill" src="{{loaded?item.pic_url:'/images/active/nodata.png'}}"></image>
+                </navigator>
+
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

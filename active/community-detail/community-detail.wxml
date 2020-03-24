@@ -1,0 +1,65 @@
+<include src="/components/common/common"></include>
+<view class="community-detail-view">
+  <!--头部-->
+  <view class='community-detail-header'>
+    <image class="community-backg-photo" mode="aspectFill" src="https://zhongcaoguan.oss-cn-shenzhen.aliyuncs.com/public/images/community_detail_bg.jpg"></image>
+    <!-- <view class='f-blur-view fliter-blur'>
+      <image class="community-backg-photo " mode="aspectFill" src="{{communityDetail.cover_pic}}"></image>
+    </view> -->
+    <view class='community-list-sec community-detail-header-sec'>
+      <view class='community-v'>
+        <image class="community-photo" mode="aspectFill" src="{{communityDetail.cover_pic}}"></image>
+      </view>
+      <view class='community-v community-v-txt pl20'>
+        <view class='community-s-tit'>{{communityDetail.name}} </view>
+        <view class='community-s-descr'>群介绍:{{communityDetail.describe}}</view>
+        <view class='fff fs24'>创建时间:{{communityDetail.create_time}}</view>
+      </view>
+
+    </view>
+
+    <view class='community-detail-set flex flex-x-right'>
+      <view class='c-d-s c-d-s1 ' wx:if="{{ismaster!=0}}" >
+        <navigator data-a="{{ismaster}}" url="{{ismaster==0?'/active/community-set/community-set?cid='+cid:'/active/create-community/create-community?cid='+cid}}" hover-class="none">
+          <icon class='c-d-i iconfont icon-shezhi'></icon>
+        </navigator>
+
+      </view>
+            <navigator class='c-d-s c-d-s2 ml20 '  wx:if="{{ismaster!=0||communityDetail.is_open==1}}" data-a="{{ismaster}}" url="{{'/active/c/c?cid='+cid+'&i='+user_info.id+'&from=detail'}}" hover-class="none">
+        <icon class='c-d-i iconfont icon-fenxiang'></icon>
+    </navigator>
+
+    </view>
+
+  </view>
+  <view class='community-detail-member flex'>
+    <view class='list-view-section-left flex-item-0'>
+      社区成员/
+      <text class='gray'>{{communityDetail.member.length}}</text>
+    </view>
+    <view class='list-view-section-right flex-item-1 pt15' >
+      <navigator  url="/active/community-member/community-member?cid={{communityDetail.id}}" hover-class="none">
+        <!-- <view class='join-image-v flex' style='width:500rpx;height:50rpx;'>
+
+          <block wx:for="{{communityDetail.member}}" wx:for-index="idx" wx:for-item="joinListItem">
+
+            <image class="join-image" style='right:{{35*idx}}rpx' mode="aspectFill" src="{{joinListItem.avatar_url}}"></image>
+
+          </block>
+        </view> -->
+        <photo-list width="50" height="50" count="5" offset="30" position="auto" member="{{communityDetail.member}}"> </photo-list>
+ </navigator>
+    </view>
+
+    <view class='jiantou-r flex-item-0'>
+          <navigator  url="/active/community-member/community-member?cid={{communityDetail.id}}" hover-class="none">
+      <image src="/images/icon-jiantou-r.png" class='ml10 flex-auto' style="width: 12rpx;height: 22rpx"></image>
+    </navigator>
+    </view>
+  </view>
+  <view class='community-index-listv'>
+    <community-list bind:dzevent="dzFn"  bind:myevent="typeFn" bind:commentevent="sumbitComment"   moduleList="{{moduleList}}"  iscircle_master="{{ismaster}}" bind:hideevent="hideInfo" initload="{{initload}}" loadingstutas="{{loadingstutas}}" num="0"   cid="{{cid}}" pagetype="index" communityList="{{communityList}}"></community-list>
+  </view>
+  <include src="/commons/navbar/navbar"></include>
+  <!-- <include src="/commons/com-footer/com-footer"></include> -->
+</view>

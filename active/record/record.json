@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "我的记录",
+      "enablePullDownRefresh": true,
+      
+      "usingComponents": {
+        "record-list": "/components/record-list/record-list"
+      }
+}

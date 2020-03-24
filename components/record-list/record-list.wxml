@@ -1,0 +1,99 @@
+<!--列表-->
+<view class='list-view-box' >
+  <view class='list-view-select' wx:if="{{typenum==1}}">
+    <view data-type="1" data-num="{{num}}" bindtap='typeFn' class='l-se-view {{num=="1"?"active":""}}'>进行中</view>
+    <view data-type="2" data-num="{{num}}" bindtap='typeFn' class='l-se-view {{num=="2"?"active":""}}'>已完成</view>
+  </view>
+  <!-- <view class='list-view-select' wx:else>
+    <view data-type="{{typenum}}" data-num="{{num}}" class='l-se-view '>我发布的</view>
+  </view> -->
+  <view wx:if="{{initload==1}}">
+    <view class='v-tc  pt80'>
+      <view class="weui-loading"></view>加载中...</view>
+  </view>
+  <view wx:else class='list-view community-index-list'>
+    <!-- <scroll-view class="list-scroll-view" scroll-y="false"> -->
+    <view data-a="{{communityList.length}}" wx:if="{{communityList!=''&&communityList.length>0}}">
+      <block wx:for="{{communityList}}" wx:for-index="idx" wx:for-item="item">
+        <view wx:if="{{item.live_type!=1}}" style='margin-top:{{idx==0?"0":"30rpx"}}' class='list-view-section'>
+          <navigator style='width:100%;' url="{{'/active/active-template/topic-active/detail-topic/detail-topic?id='+item.id+'&cid='+item.circle_id+'&atype='+item.live_type}}" hover-class="none">
+            <view class="list-view-info line-gray pb20">
+              <view class='list-view-info-item'>
+                <image class="info-image" mode="aspectFill" src="{{item.avatar}}"></image>
+              </view>
+              <view class='list-view-info-item list-view-info-itemr'>
+                <view class="f333 stitle list-view-info-tit"> {{item.circle_name}} </view>
+                <view class="f999 descP">{{item.time}}</view>
+              </view>
+
+            </view>
+
+
+            <view class='list-view-item-img flex pt20 pb20'>
+
+
+              <image wx:if="{{item.pic_list[0]}}" class='flex-item-0' style='width:240rpx;height:240rpx' mode="aspectFill" src="{{item.pic_list[0]}}"></image>
+              <view class='list-view-item-img flex-item-1' style='align-items:flex-start'>
+                <view class='pl20 pr20'>
+                  <view class='list-view-item-tit f333'> {{item.text}}</view>
+                  <view class='list-view-item-time f999  ' style=''>
+                    <text style='width:28rpx;height:28rpx;' class='iconfont icon-shijian1 pr10 '></text>
+                    <text class=''>{{item.time}}</text> </view>
+                </view>
+              </view>
+            </view>
+
+          </navigator>
+        </view>
+
+        <view wx:else="{{item.live_type==1}}" style='margin-top:{{idx==0?"0":"30rpx"}}' class='list-view-section list-view-pc'>
+          <navigator style='width:100%;' url="{{item.status==1||item.is_master==0||item.joinList.length>1?'/active/active-template/carpool-active/join-active/join-active?form=record&id='+item.id+'&cid='+item.circle_id:'/active/active-template/carpool-active/create-active/create-active?id='+item.id+'&circle_id='+item.circle_id+'&type=1&form=record'}}" hover-class="none">
+          <view class="list-view-info">
+            <view class='list-view-info-item'>
+              <image class="info-image" mode="aspectFill" src="{{item.avatar}}"></image>
+            </view>
+            <view class='list-view-info-item list-view-info-itemr'>
+              <view class="f333 stitle list-view-info-tit">{{item.nickname}} </view>
+              <view class="f999 descP">{{item.time}}</view>
+            </view>
+
+          </view>
+          <view class='list-view-item-txt'>{{item.title}}</view>
+          <view class='list-pc-box'>
+          
+
+              <view class='list-pc-tit {{item.type==0?"yellow":"green"}}' style='position: relative;'>
+                <icon class='iconfont {{item.type==0?"icon-zhaoren":"icon-icon-"}} fs36'></icon>
+                {{item.type==0?'我要找人':'我要找车'}}
+                <text wx:if="{{item.type==0}}" class='f999 fs28' style='position: absolute; right:20rpx;top:30rpx;'>还有 <text class='yellow'>{{item.seat_number}}</text> 个座位</text>
+              </view>
+              <view class='list-pc-cont'>
+                <view class='list-pc-cont-p'>
+                  <icon class='iconfont {{item.type==0?"icon-mudedi1 yellow":"icon-mudedi1 green"}} fs36'></icon>【目的地】</view>
+                <view class='list-pc-cont-p pl40'>{{item.start_place}}</view>
+                <view class='list-pc-cont-p'>
+                  <icon class='iconfont {{item.type==0?"icon-chufa yellow":"icon-chufa green"}} fs36'></icon>【出发地】</view>
+                <view class='list-pc-cont-p pl40'>{{item.end_place}}</view>
+
+              </view>
+
+
+          </view>
+
+          </navigator>
+
+        </view>
+      </block>
+      <view class='v-tc pb30 pt30' wx:if="{{loadingstutas!=0}}">
+        <view wx:if="{{loadingstutas!=2}}" class="weui-loading"></view>{{loadingstutas==1?"加载更多...":"没有更多了..."}}</view>
+    </view>
+    <view class='nodata-view' wx:else>
+      <image class="nodata-photo " mode="aspectFill" src="/images/active/nodata.png"></image>
+      <view class='nodata-txt-view pt20 f999'>暂无数据...</view>
+    </view>
+
+    <!-- </scroll-view> -->
+
+  </view>
+
+</view>

@@ -1,0 +1,25 @@
+
+page {
+    background: #f3f2f7;
+}
+
+.community-btn-view{ padding: 20rpx 30rpx 0 30rpx;}
+.x-input{ display: inline-block; width: 300rpx; font-size: 28rpx; height: 85rpx; line-height: 85rpx;	background-color: #ffffff;	border: none; border-radius: 6px;}
+.community-btn-view button{ height: 87rpx; padding: 0; line-height: 87rpx; font-size: 30rpx;}
+.group-section-box{padding: 20rpx 30rpx 20rpx 30rpx;}
+.driver-section-box{opacity: 0.9}
+  .community-label-se .community-label{ margin-right: 15rpx; margin-top: 15rpx  }
+  .lx-box{ padding: 0 10rpx;}
+  .group-section-i{height: 86rpx;line-height: 86rpx;}
+ .community-photo{ height: 140rpx;width: 140rpx; border-radius: 50%;}
+ .community-photo image{display: inline-block;}
+  .driver-backg-photo{ width: 100%;}
+    .bz-view{height: 80rpx;line-height: 80rpx; margin-bottom: 30rpx; margin-top: 10rpx;}
+  .x-input1{ 	width: 530rpx;
+	height: 80rpx;
+	background-color: #eeeeee;
+	border-radius: 6px;  padding: 0 20rpx; margin-left: 27rpx;}
+  .driver-info-head{background: #fff; padding: 20rpx 30rpx;}
+  .driver-info-head-name{  }
+    .driver-info-head-name text{ display: flex; align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/}

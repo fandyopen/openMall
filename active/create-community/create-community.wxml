@@ -1,0 +1,79 @@
+<include src="/components/common/common"></include>
+<view wx:if="{{!_loading}}" class='community-list-view community-set-list'>
+  <form bindsubmit='creatCommunity'>
+    <view class="input-group-list greenBg">
+      <view class="input-group ">
+        <view class="flex-item-1 input-group-label fs36 fff mt10 mb20">社区名称</view>
+
+        <view class="input-section">
+          <input class='x-input' type="text" name='name' placeholder="请输入名称 例：小区名称 、班级、老乡会" value='{{communityInfo.name}}' />
+        </view>
+
+
+      </view>
+    </view>
+    <view class='group-section-box white'>
+      <view class="group-section mb20">
+
+        <textarea class='x-input-aretext' name='describe' type="text" value='{{communityInfo.describe}}' placeholder="简单介绍一下你的圈子吧" />
+
+      </view>
+      <view class="group-section mb10">
+        <view class='group-section-tit '>添加标签</view>
+        <view class='community-label-se flex'>
+          <block wx:for="{{labelList}}" wx:for-index="idx" wx:for-item="item">
+            <!-- <block wx:if="{{cid}}" wx:for="{{communityInfo.tag}}" wx:for-index="idx" wx:for-item="itemTag"> -->
+            <view bindtap='selectLabelFn' style='min-width:20%' wx:if="{{idx<9}}" data-id="{{item.id}}" class='community-label  {{item.ischeck?"btn-green border-green":"btn-defalut border-gray"}}  flex-item-1 flex-align'>{{item.name}}</view>
+            <!-- </block> -->
+          </block>
+          <!-- <view bindtap='labelMoreFn' class=' community-label btn-gray flex-item-0 '>添加其它+</view> -->
+        </view>
+
+      </view>
+
+
+
+    </view>
+    <view class='group-section-box white mt20 flex fs32 f333'>
+
+      <view class="input-group-flex input-group-label">
+        <view class='fs36 pb10'>成员分享社区</view>
+        <view class='fs28 f999'>允许,所有成员分享社圈</view>
+        <view class='fs28 f999'>不允许,只有管理员分享社圈</view>
+      </view>
+
+      <view bindtap="" class="flex-item-1 v-tr pr20">
+        <switch checked="{{is_open==1?true:false}}" bindchange="switch1Change" />
+      </view>
+
+
+
+    </view>
+    <view wx:if="{{cid}}" class='group-section-box white mt20  fs32 f333'>
+      <view class="input-group-flex input-group-label fs36 pb10">
+        <view class='fs36  pb10'>发布设置 </view>
+        <view class='f999 fs28'>是否允许成员发布圈子活动</view>
+      </view>
+      <view class='set-section-view'>
+        <block wx:for="{{publishAllArray}}" wx:for-index="idx" wx:for-item="allitem">
+      <view class='flex set-section mb30 line-gray pb20'>
+        <view class="input-group-flex input-group-label">
+          <view class='fs32 f333 pb10'>{{allitem.title}}</view>
+
+        </view>
+
+        <view bindtap="" class="flex-item-1 v-tr pr20">
+          <switch style='zoom: 0.7' class='wx-switch-input' checked="{{allitem.value==0?true:false}}" bindchange="switchChange{{idx+2}}" />
+        </view>
+      </view>
+
+       </block>
+</view>
+    </view>
+    <view class='community-btn-view'>
+      <button plain='true' disabled='{{disabled}}' form-type='submit' class='btn-green'>{{btnStr}}</button>
+    </view>
+  </form>
+
+
+</view>

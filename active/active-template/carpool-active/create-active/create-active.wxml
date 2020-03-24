@@ -1,0 +1,242 @@
+<include src="/components/common/common"></include>
+<view class='community-list-view community-set-list'>
+  <!--有人加入以后或者状态已结束显示的操作-->
+  <!--<view wx:if="{{joininfo.joinList.length<=1||joininfo.status==1}}"  class='group-section-boxp white mt20  fs32 f333'>-->
+    <!--<view class='flex line-gray pb10'>-->
+      <!--<view class='fs32 pb10 pl30 f000'>成员列表</view>-->
+    <!--</view>-->
+    <!--<view class='white zl-box pall' style='padding-top:0;'>-->
+      <!--<block wx:for="{{joininfo.joinList}}" wx:for-index="idx" wx:for-item="item">-->
+        <!--<view class='photo-sec flex line-gray photo-sec-me'>-->
+          <!--<view class='photo-v flex-item-0'>-->
+            <!--<image class="pwh120 pradius" mode="aspectFill" src="{{item.avatar}}"></image>-->
+          <!--</view>-->
+          <!--<view class='photo-v pl20 flex-item-1 ellipsis' style='width:80%;'>-->
+            <!--<view class='join-v join-active-tit fs32 f000'>{{item.nickname}} </view>-->
+            <!--<view class='join-v  fs28'>【{{item.is_passenger==1?"我是乘客":"我是司机"}}】共{{item.count_passenger}}人 </view>-->
+            <!--<view class='join-v join-active-descr fs24 f666 ellipsis'>{{item.mark}}</view>-->
+          <!--</view>-->
+
+        <!--</view>-->
+
+      <!--</block>-->
+    <!--</view>-->
+  <!--</view>-->
+  <!--没有人加入显示的操作-->
+  <form bindsubmit='{{id?"editActive":"creatActive"}}' reportSubmit="true">
+
+    <view class="group-section-box  white   fs32 f333 mt20 " style='height:auto;'>
+      <view class='group-section-i flex {{!id?"flex-x-center":""}}' style='padding-top:20rpx;padding-bottom:20rpx'>
+        <!-- <radio-group class="radio-group flex-align f666 fs28" bindchange="radioChange" style='height:80rpx;lline-height:80rpx;justify-content:flex-start;'> -->
+        <!-- <radio wx:if="{{!id||is_passenger==0}}" style='' name="is_passenger" class='fs36 flex' value="0" checked="{{is_passenger==0?true:''}}" /> -->
+        <view wx:if="{{!id||is_passenger==0}}" class='driver_radio mr60  flex-item-0 {{is_passenger==0?"radio-active-btn":"radio-default-btn"}}' data-is_passenger="0" bindtap='selectDriver'>
+          <icon wx:if="{{!id||is_passenger==0}}" class='iconfont icon-siji-  mr10 fs36'></icon>
+          <text wx:if="{{!id||is_passenger==0}}">我是司机</text>
+        </view>
+        <!-- <radio wx:if="{{!id||is_passenger==1}}" style='' class='flex fs36 ml40' name="is_passenger" value="1" checked="{{is_passenger==1?true:''}}" /> -->
+        <view wx:if="{{!id||is_passenger==1}}" class='driver_radio {{is_passenger==1?"radio-active-btn":"radio-default-btn"}} flex-item-0' data-is_passenger="1" bindtap='selectDriver'>
+          <icon wx:if="{{!id||is_passenger==1}}" class='iconfont icon-chengke fs36 mr10'></icon>
+          <text class='' wx:if="{{!id||is_passenger==1}}">我是乘客</text>
+        </view>
+        <!-- </radio-group> -->
+      </view>
+
+    </view>
+    <view class="group-section-box  white  flex fs32 f333 mt20">
+
+      <view class="input-group-label">我的信息</view>
+      <view bindtap="showAreaPicker" class="flex-item-1 v-tr">
+        <navigator url="/active/driver-info/driver-info?is_passenger={{is_passenger}}" hover-class="none">
+          <text wx:if="{{driver_info.mobile}}" class='f999 fs28'>{{is_passenger==0&&driver_info.car_number==""?'还没设置信息':driver_info.mobile}}</text>
+          <text wx:else class='f999 fs28'>还没设置信息</text>
+          <image src="/images/icon-jiantou-r.png" class='ml20' style="width: 12rpx;height: 22rpx"></image>
+        </navigator>
+      </view>
+    </view>
+    <view class="group-section-box  white mt20 flex fs32 f333">
+      <view class="input-group-label">常用路线</view>
+      <view class="input-group-label v-tr" style='width:80rpx;'>
+        <navigator url="/active/route/route" hover-class="none">
+          <icon class='iconfont icon-shezhi'></icon>
+        </navigator>
+      </view>
+      <view bindtap="getQuickRoute" class="flex-item-1 v-tr">
+        <image src="/images/icon-jiantou-r.png" class='ml20' style="width: 12rpx;height: 22rpx"></image>
+      </view>
+    </view>
+    <view class='group-section-boxp white mt20  fs32 f333'>
+      <view class='flex  pb10'>
+        <view class="input-group-flex input-group-label">
+          <view class='fs36 pb10'>发布路线</view>
+
+        </view>
+        <view bindtap="changeAddress" class="flex-item-1 v-tr ">
+          <icon class='iconfont icon-zhuanhuan fs42'></icon>
+        </view>
+      </view>
+      <view class='white lx-box'>
+        <view class='group-section-i line-gray '>
+          <button plain='true' bindtap='getStartAddress' class='pt20 pb10 f666 v-tl'>{{startAddressInfo?startAddressInfo.name:"输入起点"}}</button>
+
+          <!-- <input class='x-input pt20 pb10 f666' type="text" value='{{startAddressInfo.name}}' bindtap='getStartAddress' placeholder="输入起点" /> -->
+
+        </view>
+        <view class='group-section-i '>
+          <button plain='true' bindtap='getEndAddress' class='pt20 pb10 f666 v-tl'>{{endAddressInfo?endAddressInfo.name:'输入终点'}}</button>
+          <!-- <input class='x-input pt20 pb10 f666' type="text" value='{{endAddressInfo.name}}' bindtap='getEndAddress' placeholder="输入终点" /> -->
+
+        </view>
+
+      </view>
+
+
+    </view>
+    <view class='group-section-boxp white mt20  fs32 f333'>
+
+      <view class='group-section-i line-gray '>
+        <view class="input-section   flex" style=''>
+          <text class='flex-item-0 f666 fs28 pt20'>最早出发时间:</text>
+          <picker class='pick-start flex-item-1 ' data-type='start' mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="picker fs28 f666">
+              {{earliest_time}}
+            </view>
+          </picker>
+
+        </view>
+
+      </view>
+      <view class='group-section-i line-gray'>
+
+        <view class="input-section flex">
+          <text class='flex-item-0 f666 fs28 pt20'>最晚出发时间:</text>
+          <picker class='pick-start flex-item-1 ' data-type='end' mode="multiSelector" value="{{dateTime2}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray2}}">
+            <view class="picker fs28 f666" style=''>
+              {{latest_time}}
+            </view>
+          </picker>
+
+        </view>
+
+      </view>
+      <view class='group-section-i  fs28 flex  '>
+        <text class='flex-item-0 f666' style='padding-top:20rpx'>乘车人数:</text>
+        <view class="input-section flex-item-1 flex">
+          <input value='{{joininfo.total}}' type='number' class='x-input1 f666' style='width:100%;	background-color: #fff; text-align: right;' name="number" placeholder=''></input>
+
+        </view>
+
+      </view>
+
+    </view>
+    <view class='group-section-boxp white mt20  fs32 f333' wx:if="{{is_passenger==0}}">
+
+      <view class='group-section-i  fs28 flex '>
+        <view class="input-group-flex input-group-label">
+          <view class='fs36 pb10'>是否打赏</view>
+        </view>
+        <view bindtap="" class="flex-item-1 v-tr">
+          <switch checked="{{is_ds?true:false}}" bindchange="switch2Change" />
+        </view>
+
+
+      </view>
+      <view class="input-section   flex-align" wx:if="{{is_ds}}">
+
+        <input type='number' class='x-input1 f666 border-gray mt20' value='{{joininfo.price==0.00?"":joininfo.price}}' style='width:100%;	background-color: #fff; ' name="price" placeholder='请输入打赏金额'></input>
+
+
+      </view>
+    </view>
+    <view class='group-section-boxp white mt20  fs32 f333'>
+      <view wx:if="{{!id}}" class='flex'>
+        <view class="input-group-flex input-group-label">
+          <view class='fs36 pb10'>设为常用路线</view>
+        </view>
+
+        <view bindtap="" class="flex-item-1 v-tr">
+          <switch bindchange="switch1Change" />
+        </view>
+      </view>
+      <view class='bz-view flex  '>
+        <!-- <text>备注</text> -->
+        <input class='x-input1 flex-item-1 border-gray' value='{{masterInfo.mark}}' name="mark" placeholder='我的备注'></input>
+      </view>
+
+      <view class='bz-view  v-tc' bindtap=''>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <label class="radio">
+            <radio checked='{{mzsm}}' />
+            <text>我已阅读并同意</text>
+            <text class='green' catchtap='showSm'>《拼车平台声明》</text>
+          </label>
+        </radio-group>
+
+      </view>
+    </view>
+    <view wx:if="{{joininfo.status!=1}}" class='community-btn-view'>
+
+      <button form-type='submit' hover-class="none" >
+        <form  bindsubmit='{{id?"editActive":"creatActive"}}' reportSubmit="true">
+      <button form-type='submit' hover-class="none"  >
+        <form  bindsubmit='{{id?"editActive":"creatActive"}}' reportSubmit="true">
+      <button form-type='submit' hover-class="none" >
+        <form  bindsubmit='{{id?"editActive":"creatActive"}}' reportSubmit="true">
+          <view class='flex'>
+      <button plain='true' disabled='{{disabled}}' wx:if="{{!id}}" form-type='submit' hover-class="none" class='btn-green flex-item-1'>创建活动</button>
+      <button plain='true' disabled='{{disabled}}' wx:if="{{id}}" form-type='submit' hover-class="none" class='btn-green flex-item-1 mr40'>保存编辑</button>
+      <button plain='true' disabled='{{disabled}}' wx:if="{{id}}" class='btn-green flex-item-1' hover-class="none" catchtap='inviteFn'>邀请好友</button>
+          </view>
+        </form>
+      </button>
+        </form>
+      </button>
+        </form>
+      </button>
+
+    </view>
+  </form>
+
+</view>
+<view wx:if="{{showMz}}" catchtouchmove="return" class='mzsmModelMast'>
+</view>
+<view wx:if="{{showMz}}" catchtouchmove="return" class='mzsmModel'>
+<view class='mzsmModelTit line-gray'>拼车免责声明</view>
+<view class='mzsmModelCont'>
+<scroll-view scroll-y  style="height:100%;" >
+<view class='tx'>
+1、	一切小程序用户在浏览使用小程序时均被视为已经仔细阅读本免责声明并完全同意。凡以任何方式直接、间接使用本小程序资料者，均被视为自愿接受本小程序相关声明和用户服务协议的约束
+</view>
+<view class='tx'>
+2、	小程序转载的内容并不代表小程序创建方之意见与观点，也不意味着本小程序赞同其观点或证实其内容的真实性
+</view>
+<view class='tx'>
+3、	小程序转载、发布的文字、图片等信息资料均由小程序用户提供，其真实性、准确性和合法性由信息发布人负责。小程序不提供任何保证，并不承担任何法律责任
+</view>
+<view class='tx'>
+4、	小程序转载、发布的文字、图片等信息资料，如果侵犯了第三方的知识产权或其他权利，责任由作者或转载者本人承担，本小程序对此不承担责任
+</view>
+<view class='tx'>
+5、	本小程序不保证为向用户提供便利而设置添加的功能与链接的准确性与完整性，同时，对于功能与链接指向的不由小程序实际控制的任何页面与信息上的内容，小程序不承担任何责任
+</view>
+<view class='tx'>
+6、	用户明确并同意其使用本小程序所存在的风险将由其本人承担；因用户使用本小程序而产生的一切后果也由其本人承担，小程序对此不承担任何责任
+</view>
+<view class='tx'>
+7、	除本小程序注明的服务条款外，其他因不当使用本小程序而导致的任何意外、疏忽、合约毁坏、诽谤、版权或其他知识产权侵犯及其所造成的任何损失，本小程序概不负责，亦不承担任何法律责任
+</view>
+<view class='tx'>
+8、	对应因不可抗力或黑客攻击、通讯线路中断等等本小程序不能控制的原因造成的网络服务中断或其他缺陷，导致用户不能正常使用小程序，本小程序不承担任何责任，但将尽力减少因此给用户造成的损失或影响。
+</view>
+<view class='tx'>
+9、	本声明未涉及的问题请参见国家有关法律法规，当本声明与国家有关法律法规冲突时，以国家法律法规为准。
+</view>
+<view class='tx'>
+10、	本小程序严格遵守微信公众平台小程序运营规范，并遵守当地法律监管。
+</view>
+<view class='tx'>
+11、	本网站相关声明版权及其修改权、更新权和最终解释权均属本小程序所有。
+</view>
+</scroll-view>
+</view>
+<view class="pt20 pb20 mzqd"><button bindtap='clearSm' plain='true' class='btn-green'>确定</button></view>
+</view>

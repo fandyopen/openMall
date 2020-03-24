@@ -1,0 +1,17 @@
+<include src="/components/common/common"></include>
+<view class="community-view route-view">
+  <!--列表-->
+  <view class='route-view-list'>
+    <scroll-view class="communitylist-scroll-view" scroll-y="false">
+          <block wx:for="{{routeList}}" wx:for-index="idx" wx:for-item="item">
+      <view class='route-section flex'>
+        <view class='flex-item-0 flex' style='width:90%'>{{item.start.place}}->{{item.end.place}}</view>
+         <view class='flex-item-1  flex flex-x-right'> <icon bindtap='delRoute' data-id="{{item.id}}" class='iconfont icon-shanchu flex-item-0 flex fs36'></icon>
+</view>
+      </view>
+         </block>
+    </scroll-view>
+  </view>
+
+
+</view>

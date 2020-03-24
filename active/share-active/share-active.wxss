@@ -1,0 +1,41 @@
+page {
+   background: #f3fffc;
+}
+.share-type-view{ height: 100%;}
+.community-member{ height: 100%;}
+.community-header{
+position: relative;
+padding: 110rpx 60rpx 0 60rpx;
+height: 85%;
+}
+.community-photo{ height: 150rpx;width: 150rpx; }
+.community-s-tit{
+	font-family: PingFang-SC-Medium;
+	font-weight: normal;
+	color: #333;
+  }
+.community-s-descr{
+	font-family: PingFang-SC-Medium;
+	font-weight: normal;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+
+
+}
+ .join-image{
+     width: 67rpx;
+    height: 67rpx;
+    border-radius: 50%;
+ 
+}
+.community-v-ph{position: relative; width: 30%;margin: 0 auto;height:67rpx; }
+.community-v-ph .join-image{position: absolute;}
+.community-detail-header-sec{position: relative; border:1px solid #f1f1f1;height: 100%;
+background: #fff;padding: 40rpx;
+box-shadow: 0px 6px 10px 0px 
+		rgba(188, 188, 188, 0.65);
+	border-radius: 10px;
+}
+.community-v-photo{ position: absolute;top: -50rpx; left: 31%; width: 250rpx; }
+.community-photo{ height: 120rpx;width: 120rpx; border-radius: 50%;}
+.community-v-txt{ padding: 0rpx 0;border-radius: 20rpx;border: solid 1px #dddddd;}

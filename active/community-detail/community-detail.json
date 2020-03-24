@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的社圈",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "community-list": "/components/community-list/community-list",
+    "photo-list": "/components/photo-list/photo-list"
+  }
+}

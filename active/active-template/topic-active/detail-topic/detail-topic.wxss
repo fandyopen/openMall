@@ -1,0 +1,18 @@
+
+page {
+    background: #fff;
+}
+.topic-view{ background: #fff; padding: 30rpx;}
+.comment-input-view{ box-shadow: 5rpx 12rpx 8rpx 5rpx	rgba(231, 231, 231, 0.65); padding: 20rpx 30rpx;  z-index: 9; position: fixed; bottom: 0rpx; background: #f0f6f9 ;width:100%;
+left:0;
+}
+.comment-input-form{ width: 100%;}
+.t-textarea{ padding:0rpx 20rpx; border-radius: 10rpx; height: 80rpx; line-height: 80rpx; width: auto;border: 1px solid #eeeeee;background: #fff;}
+.comment-send-btn{ width: 140rpx; background: #3caf62;  height: 80rpx; line-height: 80rpx; color: #fff;}
+.commentForm{ width: 100%;}
+.comment-view{ margin-bottom: 75rpx;}
+.active-icon-pinglun{ position: relative;}
+.comment-num{ position: absolute;font-size: 18rpx;top:-12rpx;
+right:-10rpx; text-align: left
+}
+.activeDz{ color: #fc843b;}

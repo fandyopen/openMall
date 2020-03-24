@@ -1,0 +1,80 @@
+page {
+  background: #f3f2f7;
+}
+
+.community-list-view .input-group {
+}
+
+.community-list-view .input-group .input-group-label {
+  line-height: inherit;
+  min-width: 200rpx;
+}
+
+.community-list-view .input-group-list {
+  padding: 20rpx 30rpx 40rpx 30rpx;
+}
+
+.community-list-view .input-group-list .input-group:last-child:after {
+  display: none;
+}
+
+.community-btn-view {
+  padding: 20rpx 30rpx;
+}
+
+.x-input {
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  border: none;
+  padding: 0 20rpx;
+  border-radius: 6rpx;
+}
+
+.community-btn-view button {
+  height: 87rpx;
+  padding: 0;
+  line-height: 87rpx;
+  font-size: 30rpx;
+  background-color:#3caf62;
+  color: #fff;
+}
+
+.x-input-aretext {
+  background: #eee;
+  height: 190rpx;
+  padding: 20rpx;
+  width: 100%;
+  border-radius: 6rpx;
+}
+
+.group-section-box {
+  padding: 20rpx 30rpx 20rpx 30rpx;
+}
+
+.group-section {
+}
+
+.group-section-tit {
+  font-size: 36rpx;
+  font-weight: normal;
+  font-stretch: normal;
+  letter-spacing: 0px;
+  color: #333;
+}
+
+.community-label-se .community-label {
+  margin-right: 15rpx;
+  margin-top: 15rpx;
+}
+
+.community-label-se .btn-defalut {
+  padding: 10rpx 25rpx;
+}
+.community-label-se .border-green {
+  padding: 10rpx 25rpx;
+}
+.set-section-view{ padding: 20rpx 20rpx; border: 1px solid #eee;}
+/* .wx-switch-input{width:42px !important;height:24px !important;}
+.wx-switch-input::before{width:41px !important;height: 24px !important;}
+.wx-switch-input::after{width: 20px !important;height: 20px !important;} */

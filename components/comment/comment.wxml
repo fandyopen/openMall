@@ -1,0 +1,52 @@
+<!--列表-->
+<view class='list-view-box comment-view' data-aa="{{loadingstutas}}">
+
+
+  <view class='comment-list-view'>
+ 
+    <view class='list-view community-index-list'>
+      <view data-a="{{commentList.length}}" wx:if="{{commentList.length>0}}">
+        <block wx:for="{{commentList}}" wx:for-index="idx" wx:for-item="item">
+          <view class='comment-sec pb20 pt40'>
+            <view class='flex' data-id="{{item.id}}" data-user_id="{{item.user_id}}"  bindtap='sumbitSelfComment'>
+              <view class='flex-item-0'>
+                <image class="pradius" style='width:50rpx;height:50rpx;' mode="aspectFill" src="{{item.userInfo.face}}"></image>
+              </view>
+              <view class='flex-item-1 pl10' style='width:90%'>
+                <view class='flex'>
+                  <text class='fs28 flex-item-0 f999'> {{item.userInfo.nickname}}</text>
+                  <text class='fs24 flex-item-1 flex-x-right f999 '>{{item.createTime}}</text>
+                </view>
+                 <view class='flex'>
+                <view class='fs28 pt15 f333 flex-item-0'>{{item.text}}</view>
+                        <view class='comment-dz flex-item-1 flex-x-right flex-y-top'>
+                      <icon style=' font-size:40rpx;' data-mode="commentary" data-id="{{item.id}}" catchtap='dzFn' class=" c-d-i iconfont icon-dianzan1  active-icon-pinglun f999">
+            </icon>
+                </view>
+           </view>
+              </view>
+            </view>
+     <view wx:if="{{item.child.length>0}}" class='comment-child-view mt20 fs28'>
+     <view class='sjx'> </view>
+                  <block  wx:for="{{item.child}}" wx:for-index="idxs" wx:for-item="itemChild">
+                    <view class='pb10'  data-id="{{itemChild.id}}" data-user_id="{{itemChild.user_id}}" data-reply="{{itemChild.user_id}}" data-parentid="{{item.id}}"  bindtap='sumbitSelfComment'>
+           <!-- wx:if="{{nameList[itemChild.user_id]='4545'}}" -->
+
+                      <text style='color:#52affe;padding-right:8rpx;'>{{itemChild.userInfo.nickname}}</text> <text style='color:#999'>回复</text> <text style='color:#52affe;padding-left:8rpx;'>{{nameList[itemChild.replyUserID]}}</text>：<text class='f666 '>{{itemChild.text}}</text>
+
+                    </view>
+
+                    
+
+                  </block>
+                 
+                </view>
+        
+          </view>
+        </block>
+        <view class='v-tc pb30 pt30' wx:if="{{loadingstutas!=0&&commentList.length>5}}">
+          <view wx:if="{{loadingstutas!=2}}" class="weui-loading"></view>{{loadingstutas==1?"加载更多...":"没有更多了..."}}</view>
+      </view>
+    </view>
+  </view>
+</view>

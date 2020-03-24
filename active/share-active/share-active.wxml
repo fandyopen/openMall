@@ -1,0 +1,79 @@
+<include src="/components/common/common"></include>
+<view class="community-view community-member" style=' background: url("https://zhongcaoguan.oss-cn-shenzhen.aliyuncs.com/public/images/share_bg.jpg"); background-size: 100%; '>
+<!-- //话题 -->
+<view class='share-type-view' wx:if="{{atype==2}}">
+  <!--头部-->
+  <view class='community-header'>
+    <view class='community-list-sec community-detail-header-sec pt80'>
+      <view class='community-v  v-tc community-v-photo '>
+        <image class="community-photo pradius" mode="aspectFill" src="{{masterInfo.avatar}}"></image>
+          <view class='community-s-descr pb20 f333 fs32'>  {{masterInfo.nickname}}</view>
+      </view>
+    <view class='community-v v-tc f999' style='padding:100rpx 0 0 0'>邀请你加入话题活动</view>
+         <view class='community-v v-tc community-v-txt mt40' style='border:none;'>
+        <view  class='community-s-tit fs36 pb20 f333'>{{activeDetail.content}} </view>
+        <view class='community-s-descr pb20 fs28 f999'>{{activeDetail.time}}</view>
+         <view class='community-s-descr  fs28 f999 flex flex-x-center ' >  
+          <block wx:for="{{activeDetail.pic_list}}" wx:for-index="idx" wx:for-item="item" >
+           <image wx:if="{{idx<2}}" style='max-width:240rpx;height:240rpx;' class='flex-item-1 mr10 mb10'  mode="aspectFill" src="{{item}}"></image>
+            </block>
+           </view>
+      </view>
+  
+
+
+    </view>
+
+  </view>
+
+  <view wx:if="{{activeDetail}}" class='community-btn-view mt40 flex pl60 pr60'>
+          <button bindtap='returnFn' plain='true' style='padding:8rpx 32rpx; width:45%;border:1px solid #ddd'  class='btn-defalut sc-btn ffff mr40 flex-item-1'>返回首页</button>
+    <button  wx:if="{{(!isYaq&&(activeDetail.is_open||masterInfo.uid==user_info.id))||(masterInfo.uid==user_info.id)}}" open-type='share' style='padding:8rpx 32rpx;width:45%;' class='btn-green sc-btn ffff flex-item-1'>分享话题</button>
+    <!-- 活动时非管理员进来 -->
+    <button  wx:if="{{isYaq&&masterInfo.uid!=user_info.id}}" data-go="2" bindtap='receiveFn' style='padding:8rpx 32rpx;width:45%;'   class='btn-green sc-btn ffff flex-item-1'>话题详情</button>
+
+  </view>
+</view>
+<!-- //拼车 -->
+<view class='share-type-view' wx:if="{{atype==1}}">
+  <!--头部-->
+  <view class='community-header'>
+    <view class='community-list-sec community-detail-header-sec '>
+      <view class='community-v  v-tc community-v-photo '>
+        <image class="community-photo pradius" mode="aspectFill" src="{{masterInfo.avatar}}"></image>
+          <view class='community-s-descr pb20 f333 fs32'>  {{masterInfo.nickname}}</view>
+      </view>
+            <view class='community-v v-tc f999 fs28' style='padding:100rpx 0 0 0'>邀请你加入拼车</view>
+                       <view class='community-v v-tc f333 pt10 fs36' >我的拼车活动</view>
+                         <view class='community-v v-tc f333 pt10 fs28'>{{activeDetail.start_place}}→{{activeDetail.end_place}}</view>
+                 <view class='community-v v-tc f999 pt10 fs28'>{{activeDetail.time}}</view>
+      <view class='community-v  community-v-txt pt20 mt10'>
+            <view class='community-s-descr pb20 pt20 line-gray'>
+            <view class='green fs32'> <icon class='iconfont icon-shijian1'></icon> 出发时间</view> 
+            <view class='pt10 f333 fs28' style='padding-left:30rpx;'>{{activeDetail.earliest_time}}</view> 
+            </view>
+           <view class='community-s-descr pb20 pt20  line-gray'>
+            <view class='green fs32'> <icon class='iconfont icon-chufa'></icon> 出发点</view> 
+            <view class='pt10 f333 fs28' style='padding-left:30rpx'>{{activeDetail.start_place}}</view> 
+            </view>
+             <view class='community-s-descr pb20  pt20'>
+            <view class='green fs32'> <icon class='iconfont icon-mudedi'></icon> 目的地</view> 
+            <view class='pt10 f333 fs28' style='padding-left:30rpx'>{{activeDetail.end_place}}</view> 
+            </view>
+
+  
+      </view>
+
+    </view>
+
+  </view>
+
+  <view data-aaa="{{isjoin}}" wx:if="{{activeDetail}}" class='community-btn-view mt50 flex pl60 pr60'>
+          <button bindtap='returnFn' plain='true' style='padding:8rpx 32rpx; width:45%;border:1px solid #ddd'  class='btn-defalut sc-btn ffff mr40 flex-item-1'>返回首页</button>
+    <button  wx:if="{{(!isYaq&&(activeDetail.is_open||masterInfo.uid==user_info.id))||(masterInfo.uid==user_info.id)||isYaq&&isjoin}}" open-type='share' style='padding:8rpx 32rpx;width:45%;' class='btn-green sc-btn ffff flex-item-1'>邀请好友</button>
+    <!-- 活动时非管理员而且没参加活动进来 -->
+    <button  wx:if="{{isYaq&&masterInfo.uid!=user_info.id&&!isjoin}}" data-go="1"  bindtap='receiveFn' style='padding:8rpx 32rpx;width:45%;'   class='btn-green sc-btn ffff flex-item-1'>接受邀请</button>
+
+  </view>
+</view>
+</view>

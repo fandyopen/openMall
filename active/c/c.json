@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "邀请成员",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "photo-list": "/components/photo-list/photo-list"
+  }
+}

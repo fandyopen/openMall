@@ -1,0 +1,38 @@
+<include src="/components/common/common"></include>
+<view class="community-view community-member" style=' background: url("https://zhongcaoguan.oss-cn-shenzhen.aliyuncs.com/public/images/share_bg.jpg"); background-size: 100%; '>
+  <!--头部-->
+  <view class='community-header' >
+    <view class='community-list-sec community-detail-header-sec pt80'>
+      <view class='community-v  v-tc community-v-photo '>
+        <image class="community-photo" mode="aspectFill" src="{{communityDetail.cover_pic}}"></image>
+      </view>
+      <view class='community-v v-tc community-v-txt mt40'>
+          <view class='community-v v-tc f999' style='padding:20rpx 0 0 0'>邀请你加入</view>
+        <view class='community-s-tit fs36 pt20 pb20'>{{communityDetail.name}} </view>
+        <!-- <view class='community-s-descr pb20'>{{communityDetail.describe}}</view> -->
+      </view>
+      <!-- <view class='community-v v-tc community-v-ph' >
+             <block wx:for="{{communityDetail.member}}" wx:for-index="idx" wx:for-item="joinListItem" >
+
+            <image class="join-image" style='width:70rpx;height:70rpx; left:{{30*idx}}rpx' mode="aspectFill" src="{{joinListItem.avatar_url}}"></image>
+
+          </block>
+      </view> -->
+
+   <photo-list width="70" height="70" count="5" offset="40" position="{{communityDetail.member.length>2?35:20}}%" member="{{communityDetail.member}}"> </photo-list>
+  <view class='v-tc pt80'>
+   <image catchtap="imgYu" data-src='{{qrcodeUrl}}'  mode="aspectFill" style='border-radius:50%;width:250rpx;height:250rpx'  src='{{qrcodeUrl}}'></image>
+    </view>
+    </view>
+
+  </view>
+
+  <view wx:if="{{communityDetail}}" class='community-btn-view pt80 flex pl60 pr60'>
+            <button bindtap='returnFn' plain='ture' style='padding:8rpx 32rpx; width:45%;border:solid 1px #dddddd'  class='btn-defalut sc-btn ffff mr40 flex-item-1'>返回首页</button>
+    <button  wx:if="{{!y||communityDetail.creator==user_info.id||isIn}}"  open-type='share' style='padding:8rpx 32rpx;width:45%;' class='btn-green sc-btn ffff flex-item-1'>{{cont}}</button>
+    <button  wx:else bindtap='receiveFn' style='padding:8rpx 32rpx;width:45%;' class='btn-green sc-btn ffff flex-item-1'>接受邀请</button>
+    <!-- <navigator open-type='reLaunch' url="/active/index/index" hover-class="none"  class='blue-s v-tc pt20 pb20'>返回小程序首页</navigator> -->
+  </view>
+
+  <!-- <include src="/commons/com-footer/com-footer"></include> -->
+</view>

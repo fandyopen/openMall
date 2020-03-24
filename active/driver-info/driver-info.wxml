@@ -1,0 +1,38 @@
+<include src="/components/common/common"></include>
+<view class='community-list-view driver-info'>
+  <view class='driver-info-head'>
+    <!-- <image class="driver-backg-photo" mode="aspectFill" src="/images/active/bg.jpg"></image> -->
+    <view class='driver-info-head-name flex'>
+      <image class="community-photo " mode="aspectFill" src="{{user_info.avatar_url}}"></image>
+      <text class='pl20 fs36 '>{{user_info.nickname}}</text>
+
+    </view>
+  </view>
+  <form bindsubmit='creatDriver' reportSubmit="true">
+
+    <view class='group-section-box driver-section-box white mt20  fs32 f333'>
+      <view class='bz-view flex '>
+        <text class='fs30'>我的手机</text>
+        <input  class='x-input1' bindblur="blurPhone" type='number' name="mobile" value='{{driver_info.mobile}}' placeholder='拼车成功后便于司机联系'></input>
+      </view>
+      <view wx:if="{{is_passenger==0}}" class='bz-view flex '>
+        <text class='fs30'>车牌号码</text>
+        <input name='car_number' value='{{driver_info.car_number}}'  class='x-input1' placeholder=''></input>
+      </view>
+        <view wx:if="{{is_passenger==0}}" class='bz-view flex '>
+        <text class='fs30'>我的车型</text>
+        <input name='type' value='{{driver_info.type}}'  class='x-input1' placeholder=''></input>
+      </view>
+      <view wx:if="{{is_passenger==0}}" class='bz-view flex '>
+        <text class='fs30'>座位数量</text>
+        <input name="seat" type='number' class='x-input1' value='{{driver_info.seat}}' style='width:200rpx;' placeholder=''></input><text class='pl20'>座</text>
+      </view>
+
+    </view>
+    <view class='community-btn-view'>
+      <button form-type='submit' class='btn-green'>保存</button>
+    </view>
+  </form>
+
+
+</view>

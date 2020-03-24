@@ -1,0 +1,194 @@
+<!--列表-->
+<view class='list-view-box' data-im="{{iscircle_master}}">
+  <view class='list-view-select' wx:if="{{moduleList.length>0}}">
+    <view data-aaa="{{moduleList.length}}" data-cate="0" data-num="{{num}}" bindtap='typeFn' class='l-se-view {{num=="0"?"active":""}}'>全部</view>
+    
+     <block wx:for="{{moduleList}}" wx:for-index="mindex" wx:for-item="mitem">
+    <view data-cate="{{mitem.id}}" data-num="{{num}}" bindtap='typeFn' class='l-se-view {{num==mitem.id?"active":""}}'>{{mitem.display_name}}</view>
+    <!-- <view data-cate="{{mitem.id}}" data-num="{{num}}" bindtap='typeFn' class='l-se-view {{num==mitem.id?"active":""}}'>{{mitem.display_name}}</view> -->
+    </block>
+  </view>
+  <view wx:if="{{initload==1}}">
+    <view class='v-tc  pt80'>
+      <view class="weui-loading"></view>加载中...</view>
+  </view>
+  <view wx:else class='list-view community-index-list'>
+    <!-- <scroll-view class="list-scroll-view" scroll-y="false"> -->
+    <view data-a="{{communityList.length}}" wx:if="{{communityList!=''&&communityList.length>0}}">
+      <block wx:for="{{communityList}}" wx:for-index="idx" wx:for-item="item">
+      <!-- //////话题 -->
+        <view wx:if="{{item.live_type!=1}}" style='margin-top:{{idx==0?"0":"0rpx"}}' class='list-view-section'>
+          <view class="list-view-info">
+            <view class='list-view-info-item'>
+              <image class="info-image" mode="aspectFill" src="{{item.avatar}}"></image>
+            </view>
+            <view class='list-view-info-item list-view-info-itemr'>
+              <view class="f333 stitle list-view-info-tit"> {{item.nickname}}
+                <text class='btn-com btn-yellow community-type ml12 ' style='font-size:20rpx;'>{{item.live_type==1?"拼车":item.live_type==2?'话题':'预售'}}</text> </view>
+              <view class="f999 descP pt5">{{item.time}}</view>
+            </view>
+            <view class='view-section-more iconfont icon-gengduo' data-id='{{item.id}}' data-cid='{{item.circle_id}}' catchtap='showFn'>
+
+            </view>
+          </view>
+          <view class='topic-cont-sec'>
+            <view class='list-view-item-txt mt10 mb20'>
+              <navigator class='f28' url="{{'/active/active-template/topic-active/detail-topic/detail-topic?id='+item.id+'&cid='+item.circle_id+'&atype='+item.live_type}}" hover-class="none"> {{item.text}}
+              </navigator>
+            </view>
+            <view data-a="{{item.pic_list.length}}" class='list-view-item-img '>
+              <navigator class='flex' url="{{'/active/active-template/topic-active/detail-topic/detail-topic?id='+item.id+'&cid='+item.circle_id+'&atype='+item.live_type}}" hover-class="none">
+                <block wx:if="{{item.pic_list.length>0}}" wx:for="{{item.pic_list}}" wx:for-index="idxd" wx:for-item="pic_list_item">
+                  <image  catchtap="imgYu"  data-src="{{item.pic_list[idxd]}}" data-a="{{item.pic_list.length}}" data-list="{{item.pic_list}}"  style='{{idxd!=2&&idxd!=5?"margin-right: 2%":"margin-right: 0rpx"}}'  class="item-image flex-item-0 topic-image" mode="aspectFill" src="{{pic_list_item}}"></image>
+                </block>
+              </navigator>
+            </view>
+            <!-- //评论版块 -->
+            <view data-aa="{{iscircle_master}}" class='comment-view mt20'>
+    
+              <view class='share-view flex flex-x-right '>
+
+                <view class='flex-item-0 flex-x-center mr40 flex-y-center'>
+                  <icon style='padding-top:5rpx; font-size:40rpx;height:60rpx;line-height:60rpx;' data-cid="{{item.circle_id}}" data-atype="2" data-mode="topic" data-id="{{item.id}}" catchtap='commentFn' class='c-d-i iconfont icon-pinglun active-icon-pinglun f999'><text class='comment-num'>{{item.comment_num}}</text></icon>
+                </view>
+                      <view class='flex-item-0 flex-x-center mr40 flex-y-center'>
+                  <icon style='padding-top:5rpx; font-size:48rpx;height:60rpx;line-height:58rpx;' data-praise_num="{{item.praise_num}}"  data-praise_status="{{item.praise_status}}"  data-mode="live" data-id="{{item.id}}" catchtap='dzFn' class="c-d-i iconfont icon-dianzan1 {{item.praise_status=='1'?'activeDz':''}} active-icon-pinglun f999"><text class='comment-num'>{{item.praise_num}}</text></icon>
+                </view>
+                <navigator wx:if="{{iscircle_master!=0||item.is_open==1}}" class='flex-item-0 flex-y-center' url="{{'/active/share-active/share-active?id='+item.id+'&cid='+item.circle_id+'&atype='+item.live_type}}" hover-class="none">
+                  <icon style='font-size:40rpx;height:60rpx;line-height:70rpx;' class='c-d-i iconfont icon-fenxiang1 f999'></icon>
+                </navigator>
+              </view>
+
+              <view wx:if="{{item.comment||item.praise_user.length>0}}" class='comment-do-view mt10'>
+              <view class='sjx'></view>
+              <view wx:if="{{item.praise_user}}" class='dz-view line-gray'>
+                   <icon style='font-size:32rpx; margin-right:5rpx' class='c-d-i iconfont icon-dianzan1  f999'></icon>
+               <block   wx:for="{{item.praise_user}}" wx:for-index="cidx" wx:for-item="pItem">
+               <text wx:if="{{cidx<100}}" class='pr10 fs24 f999'>{{pItem.nickname}}</text>
+                 </block>
+              </view>
+                <view class='comment-list'>
+                
+                  <block  wx:for="{{item.comment}}" wx:for-index="cidx" wx:for-item="comment">
+                  <view  data-id="{{comment.id}}"  data-mode="commentary" class='commentItem fs24 pt10 pb10 pl20 pr20'>
+                    <text class='f999'>{{comment.userInfo.nickname}}:</text> {{comment.text}}
+                    </view>
+  </block>
+                </view>
+
+              </view>
+            </view>
+            <!-- //评论版块 -->
+          </view>
+
+
+        </view>
+<!-- /////////拼车 -->
+        <view wx:else="{{item.live_type==1}}" style='margin-top:{{idx==0?"0":"0rpx"}}' class='list-view-section list-view-pc'>
+          <navigator data-a="{{item.is_master}}" data-l="{{item.joinList.length}}" url="{{item.status==1||item.is_master==0||item.joinList.length>1?'/active/active-template/carpool-active/join-active/join-active?id='+item.id+'&cid='+item.circle_id:'/active/active-template/carpool-active/create-active/create-active?id='+item.id+'&circle_id='+item.circle_id+'&type=1'}}"  hover-class="navigator-hover">
+          <!--<navigator data-a="{{item.is_master}}" data-l="{{item.joinList.length}}" url="{{item.is_master==0?'/active/active-template/carpool-active/join-active/join-active?id='+item.id+'&cid='+item.circle_id:'/active/active-template/carpool-active/create-active/create-active?id='+item.id+'&circle_id='+item.circle_id+'&type=1'}}" hover-class="navigator-hover">-->
+            <view class="list-view-info">
+              <view class='list-view-info-item'>
+                <image class="info-image" mode="aspectFill" src="{{item.avatar}}"></image>
+              </view>
+              <view class='list-view-info-item list-view-info-itemr'>
+                <view class="f333 stitle list-view-info-tit">{{item.nickname}}
+                  <text class='btn-com btn-yellow community-type ml12' style='font-size:20rpx;'>{{item.live_type==1?"拼车":item.live_type==2?'话题':'预售'}}</text> </view>
+                <view class="f999 descP pt5">{{item.time}}</view>
+              </view>
+              <view class='view-section-more iconfont icon-gengduo' data-id='{{item.id}}' data-cid='{{item.circle_id}}' catchtap='showFn'>
+              </view>
+
+            </view>
+            <view class='list-view-item-txt'>{{item.mark}}</view>
+            <view class='list-pc-box'>
+              <view class='list-pc-tit {{item.type==0?"yellow":"green"}}' style='position: relative;'>
+                <icon class='iconfont {{item.type==0?"icon-zhaoren":"icon-icon-"}} fs36'></icon>
+                {{item.type==0?'我要找人':'我要找车'}}
+                <text wx:if="{{item.seat_number!=0&&item.isHasDriver==1}}" class='f999 fs28' style='position: absolute; right:20rpx;top:30rpx;'>还有 <text class='yellow'>{{item.seat_number}}</text> 个座位</text>
+                <icon style='position: absolute; right:20rpx;top:0rpx;font-size:80rpx' wx:elif="{{item.seat_number==0&&item.isHasDriver==1}}" class='my_icon iconfont icon-yiguoqi red'></icon>
+                <!-- <text wx:elif="{{item.seat_number==0&&item.isHasDriver==1}}" class='red fs32' style='position: absolute; right:20rpx;top:30rpx;'>已满员</text> -->
+
+              </view>
+              <view class='list-pc-cont '>
+
+                <view class='list-pc-cont-p '>
+                  <icon class='iconfont {{item.type==0?"icon-chufa yellow":"icon-chufa green"}} fs36'></icon>
+                  <text class='{{item.type==0?"yellow":"green"}}'>【出发地】</text>
+                </view>
+                <view class='list-pc-cont-p pl40'>{{item.start_place}}</view>
+                <view class='list-pc-cont-p'>
+                  <icon class='iconfont {{item.type==0?"icon-mudedi1 yellow":"icon-mudedi1 green"}} fs36'></icon>
+                  <text class='{{item.type==0?"yellow":"green"}}'>【目的地】</text>
+                </view>
+                <view class='list-pc-cont-p pl40'>{{item.end_place}}</view>
+              </view>
+            </view>
+            <view class='item-image-des'>
+              <view class='list-view-section-left fs28'>
+                <icon class='iconfont icon-juli fs28'></icon> {{item.distance}}km ·
+                <text class='pl0'> {{item.visit}}人浏览 ·</text>
+                <text class='pl'> {{item.join}}人参加</text>
+              </view>
+              <view class='list-view-section-right'>
+                <block wx:for="{{item.joinList}}" wx:for-index="idx" wx:for-item="joinListItem">
+                  <image class="join-image" style='width:60rpx;height:60rpx;right:{{30*idx}}rpx;z-index:{{10+idx}}' mode="aspectFill" src="{{joinListItem}}"></image>
+
+                </block>
+              </view>
+            </view>
+            <!-- <view class='list-view-item-btn {{item.status=="0"?"success":"gray"}} '>
+              {{item.status=="0"?'进行中':'已结束'}}
+            </view> -->
+          </navigator>
+          <!-- //评论版块 -->
+          <view class='comment-view'>
+            <view wx:if="{{item.is_master!=0||item.is_open==1}}" class='share-view flex  '>
+                <view class='flex-item-0 flex-y-center {{item.status=="0"?"success":"gray"}}'>   {{item.status=="0"?'进行中':'已结束'}}</view>
+                <view class='flex-item-1 flex-x-right'>
+                     <!-- <view class='flex-item-0  mr40 '>
+                <icon style='padding-top:5rpx;font-size:40rpx;height:60rpx;line-height:60rpx;' data-mode="carpool" data-id="{{item.id}}" catchtap='commentFn' class='c-d-i iconfont icon-pinglun'></icon>
+              </view> -->
+              <navigator  class='flex-item-0' url="{{'/active/share-active/share-active?id='+item.id+'&cid='+item.circle_id+'&atype='+item.live_type}}" hover-class="none ">
+                <icon style='font-size:40rpx;height:60rpx;line-height:60rpx;' class='c-d-i iconfont icon-fenxiang1 f999'></icon>
+              </navigator>
+                </view>
+          
+           
+            </view>
+
+            <!-- <view wx:if="{{false}}" class='comment-do-view'>
+              <view class='comment-list' data-a="{{isFisrtLoad}}">
+                <block wx:for="{{commentList.length==0?item.commentList:commentList}}" wx:for-index="idx" wx:for-item="commentItem">
+                  <view wx:if="{{item.commentList.length>0}}" class='commentItem fs24 pt10 pb10'>
+                    <text class='f999'>{{commentItem.userID}}:</text> {{commentItem.text}}</view>
+                </block>
+
+              </view>
+
+            </view> -->
+          </view>
+          <!-- //评论版块 -->
+        </view>
+      </block>
+      <view class='v-tc pb30 pt30' wx:if="{{loadingstutas!=0}}">
+        <view wx:if="{{loadingstutas!=2}}" class="weui-loading"></view>{{loadingstutas==1?"加载更多...":"没有更多了..."}}</view>
+    </view>
+    <view class='nodata-view' wx:else>
+      <image class="nodata-photo " mode="aspectFill" src="/images/active/nodata.png"></image>
+      <view class='nodata-txt-view pt20 f999'>暂无数据...</view>
+    </view>
+
+    <!-- </scroll-view> -->
+
+  </view>
+
+</view>
+<view data-im="{{iscircle_master}}"  wx:if="{{!iscircle_master||iscircle_master!=0||(iscircle_master==0)}}" class='edit-btn' style='{{cid?"bottom:20rpx":"bottom:110rpx"}}'>
+  <navigator wx:if="{{cid}}" url="/active/active-type/active-type?circle_id={{cid}}" class='nav-icon-class' hover-class="none">
+    <image class="p-image" mode="aspectFill" src="/images/active/p.png"></image>
+  </navigator>
+  <!-- <navigator wx:else url="/active/active-type/active-type" class='nav-icon-class' hover-class="none">
+    <image class="p-image" mode="aspectFill" src="/images/active/p.png"></image>
+  </navigator> -->
+</view>

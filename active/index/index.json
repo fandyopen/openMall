@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "发现",
+      "enablePullDownRefresh": true,
+      
+      "usingComponents": {
+        "newbanner": "/components/newbanner/newbanner",
+        "community-list": "/components/community-list/community-list"
+      }
+}

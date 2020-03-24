@@ -1,0 +1,59 @@
+<include src="/components/common/common"></include>
+<view wx:if="{{!_loading}}" class="community-view" style=' background: url("https://zhongcaoguan.oss-cn-shenzhen.aliyuncs.com/public/images/community_list_bg.jpg"); background-size: 100%; '>
+  <!--头部-->
+  <view class='community-header'>
+    <view class='community-header-tit'>圈子介绍</view>
+    <view class='community-header-cont '>
+      <!-- <view class='community-t1'>社群认证</view> -->
+      <view class='community-desc fff'>
+        适合无法人资质的班级、同乡、同学、兴趣组织等，创建者邀请5名共同发起人既可获得认证
+      </view>
+      <view class='community-apply-btn'>
+        <navigator hover-class="none" class='navi-cas flex' url="/active/create-community/create-community">创建社圈</navigator>
+      </view>
+    </view>
+
+  </view>
+  
+  <!--列表-->
+    <view  wx:if="{{initload==1}}">
+      <view class='v-tc  pt80' style='padding-top:330rpx'><view  class="weui-loading"></view>加载中...</view>
+</view>
+<view wx:else>
+  <view class='community-list-view' wx:if="{{communityList.length>0}}">
+    <!-- <scroll-view class="communitylist-scroll-view" scroll-y="false"> -->
+    <block  wx:for="{{communityList}}" wx:for-index="idx" wx:for-item="item">
+            <navigator class='navi-ca bshadow ' url="/active/community-detail/community-detail?cid={{item.id}}" hover-class="none">
+      <view class='community-list-sec  flex '>
+
+          <view class='community-v flex-item-0'>
+            <image class="community-photo" mode="aspectFill" src="{{item.cover_pic}}"></image>
+          </view>
+          <view class='community-v flex-item-1 community-v-txt pl20 '>
+          <view class='' style='width:500rpx'>
+            <view class='community-s-tit flex-item-0'>
+              <text style='max-width:260rpx;' class='ellipsis'>{{item.name}}</text>
+              <block wx:for="{{item.tag}}" wx:for-index="idx" wx:if="{{idx==0}}" wx:for-item="itemtag">
+                <text class='btn-com btn-yellow community-type ml20'>{{itemtag.name}}</text>
+              </block>
+            </view>
+            <view class='community-s-descr  flex-item-1'>{{item.describe}}</view>
+</view>
+          </view>
+     
+        <view class='community-s-descr-b {{item.status==0?"yellowBg":item.status==1?"greenBg":"grayBg"}} '>{{item.status==0?"组队中":item.status==1?"已成立":"已禁用"}}</view>
+      </view>
+         </navigator>
+    </block>
+    <view class='v-tc pb30 pt30' wx:if="{{loadingstutas!=0}}">
+      <view wx:if="{{loadingstutas!=2}}" class="weui-loading"></view>{{loadingstutas==1?"加载更多...":"没有更多了..."}}</view>
+    <!-- </scroll-view> -->
+  </view>
+      <view class='nodata-view' style='padding-top:400rpx' wx:else>
+         <image class="nodata-photo " mode="aspectFill" src="/images/active/nodata.png"></image>
+         <view class='nodata-txt-view pt20 f999' >暂无数据...</view>
+    </view>
+    </view>
+  <!--<include src="/commons/navbar/navbar"></include>-->
+  <!-- <include src="/commons/com-footer/com-footer"></include> -->
+</view>

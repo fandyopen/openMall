@@ -1,0 +1,8 @@
+
+{
+  "navigationBarTitleText": "我的话题",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "comment": "/components/comment/comment"
+  }
+}

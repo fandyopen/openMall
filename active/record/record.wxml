@@ -1,0 +1,7 @@
+<view class="community-detail-view">
+  <view class='community-index-listv'>
+    <record-list bind:myevent="typeFn"  initload="{{initload}}" loadingstutas="{{loadingstutas}}" typenum="{{typenum}}" num="{{cate}}"   cid="{{cid}}" pagetype="index" communityList="{{communityList}}"></record-list>
+  </view>
+
+
+</view>

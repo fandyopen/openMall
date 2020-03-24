@@ -1,0 +1,84 @@
+
+
+page {
+    background: #f3f2f7;
+}
+.community-view{ padding: 20rpx 30rpx;	background-color: #4db999; height: 285rpx;
+ background-size: 100%; 
+}
+.community-header{
+position: relative;
+}
+.community-header-tit{
+   padding: 14rpx 0rpx 24rpx 0;
+	font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	color: #fefefe;
+   
+}
+.community-header-cont{
+ padding: 40rpx 0rpx;
+	background-color: #ffffff;
+	border-radius: 10rpx;
+  position: absolute;
+  min-height: 150rpx;
+    display: flex;
+    width: 100%;
+
+}
+.community-t1{
+   padding: 10rpx 0rpx;
+	font-family: PingFang-SC-Bold;
+	font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	color: #3caf62;
+}
+.community-desc{
+	font-family: PingFang-SC-Medium;
+	font-size: 28rpx;
+	font-weight: normal;
+	line-height: 42rpx;
+	color: #999999;
+  text-align: justify
+}
+.community-apply-btn{
+	background-color: #3caf62;
+	border-radius: 25px;
+  color: #fff;
+  width: 240rpx;
+  padding: 10rpx 0;
+  text-align: center;
+  margin: 32rpx auto 24rpx auto;
+
+}
+.community-list-view{ padding-top: 0rpx;}
+.community-list-sec{ display: flex;border-radius: 10rpx; padding: 50rpx 20rpx 0 40rpx; }
+.community-list-sec .community-v{ flex: 0 1 auto;
+ }
+.community-photo{ height: 120rpx;width: 120rpx; border-radius: 50%;}
+.community-s-tit{
+	font-family: PingFang-SC-Medium;
+	font-size: 32rpx;
+	font-weight: normal;
+	color: #fff;
+  }
+.community-s-descr{
+	font-family: PingFang-SC-Medium;
+	font-size: 28rpx;
+	font-weight: normal;
+	color: #fff;
+  padding-top: 5rpx;
+}
+.person-record{ text-align: center;padding: 0 0rpx 0 50rpx;}
+.person-record icon{ width: 56rpx;height: 56rpx;font-size: 56rpx}
+.person-record-txt{padding-top: 20rpx;}
+
+.person-list .input-group{  height: 100rpx;display: flex; line-height: 100rpx; }
+.person-list .input-group-flex{ flex: 1 1 auto;}
+.person-list .input-group .input-group-label{  line-height: inherit; min-width: 200rpx; white-space: nowrap; }
+.person-list .input-group-list{margin-bottom: 16px;background: #fff;padding: 0 5rpx 0 32rpx;   }
+.person-list .input-group-list .input-group:last-child:after{ display: none; }
+.bd-view{position: relative;}
+.bdsj-btn{ width: 200rpx;font-size: 24rpx;position: absolute;right: 30rpx;top: 21rpx;}

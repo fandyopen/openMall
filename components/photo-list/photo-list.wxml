@@ -1,0 +1,9 @@
+<!--列表-->
+   <view class='join-image-v flex' style='height:{{height}}rpx; width:{{position}};margin:0 auto' >
+
+          <block wx:for="{{member}}" wx:for-index="idx" wx:for-item="joinListItem">
+
+            <image wx:if="{{idx<count}}" class="join-image" style='width:{{width}}rpx;height:{{height}}rpx; right:{{offset*idx}}rpx' mode="aspectFill" src="{{joinListItem.avatar_url}}"></image>
+
+          </block>
+        </view>

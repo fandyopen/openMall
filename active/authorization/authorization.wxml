@@ -1,0 +1,5 @@
+
+<view class="community-view authorization">
+    <button   open-type="openSetting" class='btn-green'>前往授权</button>
+
+</view>

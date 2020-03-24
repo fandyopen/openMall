@@ -1,0 +1,40 @@
+page {
+    background: #fff;
+}
+.community-view{ padding: 20rpx 30rpx;}
+.community-member{ background: #fff; position: relative;}
+.community-header{
+position: relative;
+}
+.community-member-list{ padding-top: 50rpx;}
+.community-list-sec{  padding: 0rpx 0rpx 0 0rpx; }
+.community-list-sec .community-v-txt{ border-bottom:1px solid #dddddd;  }
+.community-photo{ height: 80rpx;width: 80rpx; border-radius: 50%;}
+.community-s-tit{
+	font-family: PingFang-SC-Medium;
+	font-size: 32rpx;
+	font-weight: normal;
+	color: #333;
+  }
+.community-s-descr{
+	font-family: PingFang-SC-Medium;
+	font-size: 28rpx;
+	font-weight: normal;
+	color: #ddd;
+  padding-top: 10rpx;
+}
+.member-label{ padding: 4rpx 14rpx; border-radius: 6rpx;}
+.sc-btn{	width: 200rpx;	height: 76rpx;line-height: 76rpx;background-color: #ffffff;box-shadow: 0px 0px 10px 0px
+		rgba(187, 187, 187, 0.77);
+	border-radius: 38rpx;margin: 0 auto;}
+  .scs-btn{	width: 76rpx; margin: 0 auto;height: 76rpx;line-height: 76rpx;background-color: #ffffff;
+	box-shadow: 0px 0px 10px 0px
+		rgba(187, 187, 187, 0.77);
+	border-radius: 50%;}
+  .communitymember-scroll-view{ height: 1000rpx;}
+  .add-mem-btn{width: 100rpx; display: inline-block;}
+  .search_box{ height: 80rpx; line-height: 80rpx;}
+  .searchview{ width: 100%;}
+  .searchinput{width: 86%; height: 80rpx;line-height: 80rpx;border-radius: 6rpx; padding-left: 16rpx;}
+  .searchcion{ width: 14%;text-align: center;padding-top: 20rpx;border-radius: 6rpx;}
+  .community-btn-view{ position: fixed; bottom: 80rpx;right: 28rpx;}

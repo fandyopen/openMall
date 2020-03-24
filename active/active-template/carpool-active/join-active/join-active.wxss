@@ -1,0 +1,62 @@
+
+page {
+    background: #f3f2f7;
+}
+.join-active-view{ padding: 20rpx 30rpx; position: relative;}
+
+.community-list-view .input-group{  height: 100rpx;line-height: 100rpx;border-bottom: 1px solid #dddddd; }
+
+.community-list-view .input-group .input-group-label{  line-height: inherit; min-width: 200rpx;}
+.community-list-view .input-group-list{padding: 20rpx 30rpx 40rpx 30rpx; background: #fff;}
+.community-list-view .input-group-list .input-group:last-child:after{ display: none; }
+.community-btn-view{ padding: 25rpx 30rpx 0 30rpx;}
+
+.community-btn-view button{ height: 87rpx; padding: 0; line-height: 87rpx; font-size: 30rpx;}
+.group-section-box{padding: 0rpx 30rpx 0rpx 30rpx;height: 88rpx;line-height: 88rpx;}
+.group-section-boxp{padding: 20rpx 0rpx 20rpx 0rpx;}
+.group-section-tit{	font-size: 36rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #333333;}
+  .community-label-se .community-label{ margin-right: 15rpx; margin-top: 15rpx  }
+  .bz-view{height: 80rpx;line-height: 80rpx; margin-bottom: 20rpx; margin-top: 20rpx;}
+  .x-input{ 	
+	height: 80rpx;
+background-color: #fff;
+	border-radius: 6px; 
+	border: solid 1px #999999;padding: 0 10rpx; margin-left: 20rpx; margin-right: 20rpx;}
+  .pick-start{ height: 80rpx;line-height: 80rpx; }
+  .radio-group{ width: 100%;}
+  .join-v{ margin-bottom: 6rpx;}
+  .join-active-cp{	height: 50rpx;line-height: 50rpx;
+  font-size: 28rpx; text-align: left;width: 180rpx; padding: 0 5rpx}
+  .photo-sec{ width: 100%; padding: 0 30rpx;}
+   .photo-sec-me{ width: 100%; padding: 20rpx 0rpx; position: relative;}
+   .join-active-member{ position: absolute;right: 10rpx;top:20rpx; }
+   .join-active-memb-group{ position: absolute; right: 10px;top: 10px;}
+   .my_icon{ position: absolute; top: 30%;right: 35%; font-size: 200rpx; }
+
+ .mzsmModelMast{position: fixed; width: 100%; height: 100%; top: 0;
+    background-color: rgba(0, 0, 0, .50); z-index: 9;}
+  .mzsmModel{ position: fixed;  border-radius: 10rpx;   left: 50%; width: 90%; height: 85%;  background: #fff; padding: 20rpx 40rpx;
+    top: 70rpx;
+    z-index: 10;
+    transform: translate3d(-50%, 0, 0);}
+    .mzsmModelTit{ padding: 20rpx; text-align: center; font-size: 36rpx}
+    .mzsmModelCont{ font-size: 28rpx; padding: 20rpx; height: 80%; }
+    .mzsmModelCont .tx{ line-height: 40rpx; padding-bottom: 10rpx;}
+    .mzqd button{ background-color:#3caf62; color: #fff;}
+   form button{
+     padding: 0;
+   }
+
+   form button::after{
+     content: '';
+     display: none;
+   }
+
+   .u-publish-btn{
+
+
+   }

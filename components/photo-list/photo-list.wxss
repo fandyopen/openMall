@@ -1,0 +1,8 @@
+
+  @import "/common.wxss";
+.join-image-v{position: relative; }
+.join-image{
+    position: absolute;
+    border-radius: 50%;
+ 
+}

@@ -1,0 +1,11 @@
+
+page {
+    background: #f3f2f7;
+}
+.banner {
+    width: 100%;
+    height: 320rpx;
+}
+/*首页*/
+.index-view{ position: relative;}
+.community-index-listv{position: relative;}

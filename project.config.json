@@ -1,0 +1,126 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.0",
+	"appid": "wx6d38dd1e573e42ca",
+	"projectname": "newmallapp",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 9,
+			"list": [
+				{
+					"id": 0,
+					"name": "圈子",
+					"pathName": "active/community/community",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "购物车",
+					"pathName": "mch/shop-list/shop-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "发现",
+					"pathName": "active/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "圈子详情",
+					"pathName": "active/community-detail/community-detail",
+					"query": "cid=45",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "话题详情",
+					"pathName": "active/active-template/topic-active/detail-topic/detail-topic",
+					"query": "id=325&cid=45&atype=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "创建社圈",
+					"pathName": "active/create-community/create-community",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "拼车",
+					"pathName": "active/active-template/carpool-active/join-active/join-active",
+					"query": "id=313&cid=45",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "创建编辑拼车活动",
+					"pathName": "active/active-template/carpool-active/create-active/create-active",
+					"query": "id=327&circle_id=45&type=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布话题",
+					"pathName": "active/active-template/topic-active/create-topic/create-topic",
+					"query": "type=0&circle_id=45",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "商城首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,128 @@
+<include src="/components/common/common"></include>
+<view class="community-view person-view" style=' background: url("https://zhongcaoguan.oss-cn-shenzhen.aliyuncs.com/public/images/bg02.jpg"); background-size: 100%; '>
+  <!--头部-->
+  <view class='community-header'>
+    <view class='community-list-sec flex-y-center'>
+      <view class='community-v'>
+        <image class="community-photo" mode="aspectFill" src="{{user_info.avatar_url}}"></image>
+      </view>
+      <view class='community-v community-v-txt pl20 '>
+
+
+        <view class='community-s-tit'>{{user_info.nickname}}
+          <!-- <icon class='iconfont icon-nv pink'></icon> -->
+        </view>
+        <!-- <view class='community-s-descr'>余额：1200.00</view> -->
+
+      </view>
+    </view>
+    <!-- <view class='community-header-tit'>我的记录</view> -->
+    <!-- <view class='community-header-cont bshadow'>
+      <view class='person-record r1 green'>
+       <navigator hover-class="none" openType="navigate" url="/active/record/record?type=1">
+        <icon class='iconfont icon-huodong'></icon>
+        <view class='person-record-txt'> 我的拼车</view>
+        </navigator>
+      </view>
+    </view> -->
+
+  </view>
+
+</view>
+
+<!--列表-->
+<view class='community-list-view person-list'>
+  <view class="input-group-list bshadow">
+    <view class="input-group  line-gray">
+      <navigator class='flex' style='width:100%' hover-class="none" openType="navigate" url="/active/record/record?type=2">
+        <view class="input-group-label">
+          <icon class='iconfont icon-huati mr10 fs32'></icon>我的话题</view>
+
+
+        <view bindtap="showAreaPicker" class="flex-item-1 v-tr pr20 bd-view">
+
+          <image src="/images/icon-jiantou-r.png" class='ml20' style="width: 12rpx;height: 22rpx"></image>
+
+        </view>
+      </navigator>
+
+    </view>
+    <view class="input-group  ">
+      <navigator class='flex' style='width:100%' hover-class="none" openType="navigate" url="/active/record/record?type=1">
+        <view class="input-group-label">
+          <icon class='iconfont icon-che mr10 fs32'></icon>我的拼车</view>
+
+
+        <view bindtap="showAreaPicker" class="flex-item-1 v-tr pr20 bd-view">
+
+
+          <image src="/images/icon-jiantou-r.png" class='ml20' style="width: 12rpx;height: 22rpx"></image>
+
+        </view>
+      </navigator>
+
+    </view>
+  </view>
+  <view class="input-group-list bshadow" style='min-height:520rpx'>
+
+    <view class="input-group flex line-gray">
+
+      <view class="input-group-label">
+        <icon class='iconfont icon-dianhua1 mr10 fs32'></icon>绑定手机</view>
+
+
+      <view bindtap="showAreaPicker" class="flex-item-1 v-tr pr20 bd-view">
+        <navigator wx:if="{{!loadingPhone}}" hover-class="none" openType="navigate" url="/pages/bangding/bangding">
+          <button wx:if="{{xnum==''}}" class='bdsj-btn' type='primary'>绑定手机</button>
+          <text>{{xnum}} </text>
+          <image src="/images/icon-jiantou-r.png" class='ml20' style="width: 12rpx;height: 22rpx"></image>
+        </navigator>
+      </view>
+
+
+    </view>
+    <!-- <view class="input-group flex-item-1 line-gray">
+      <view class="flex input-group-label">
+        <icon class='iconfont icon-wenti mr10 fs32'></icon>使用帮助</view>
+
+      <view bindtap="showAreaPicker" class="flex-item-1 v-tr pr20">
+
+        <image src="/images/icon-jiantou-r.png" class='ml20' style="width: 12rpx;height: 22rpx"></image>
+      </view>
+
+
+    </view> -->
+    <view class="input-group flex line-gray">
+
+      <view class="input-group-label">
+        <icon class='iconfont icon-women mr10 fs32'></icon>关于我们</view>
+
+
+      <view class="flex-item-1 v-tr pr20">
+        <navigator hover-class="none" openType="navigate" url="/pages/article-detail/article-detail?&id=about_us">
+          <image src="/images/icon-jiantou-r.png" class='ml20' style="width: 12rpx;height: 22rpx"></image>
+        </navigator>
+      </view>
+
+
+    </view>
+
+
+
+  </view>
+
+
+
+
+</view>
+
+<include src="/commons/navbar/navbar"></include>
+<!--wxml-->
+<wxs module="m1">
+  var getPhoneHide = function(str) {
+    var str = str.substring(0, 3) + '****' + str.substring(7);
+    return str;
+  }
+
+  module.exports.getPhoneHide = getPhoneHide;
+</wxs>

@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "一起拼车",
+      "enablePullDownRefresh": true,
+        "usingComponents": {
+          "comment": "/components/comment/comment"
+        }
+
+}

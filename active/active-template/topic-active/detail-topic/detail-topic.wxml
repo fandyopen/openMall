@@ -1,0 +1,62 @@
+<include src="/components/common/common"></include>
+<view wx:if="{{!_loading}}">
+<view class='community-list-view topic-view'>
+  <view class='topic-detail'>
+    <view class='flex topic-photo mb10'>
+      <view class='flex-item-0'>
+        <image class="pradius" style='width:80rpx;height:80rpx;' mode="aspectFill" src="{{topicData.avatar}}"></image>
+      </view>
+      <view class='flex-item-1 ml20'>
+        <view class='fs40 f000'> {{topicData.nickname}}</view>
+        <view class='fs24 f999'>{{topicData.time}}</view>
+      </view>
+    </view>
+    <view class='topic-title fs32 f333'>
+      <text selectable='true' bindlongtap='copy'>{{topicData.content}} </text>
+    </view>
+    <!-- <view class='topic-cont fs32  mt40'>{{topicData.content}}</view> -->
+    <view class='topic-pic flex mt20'>
+      <block data-index="{{index}}" wx:for="{{topicData.pic_list}}">
+        <image catchtap="imgYu" data-src="{{item}}" data-list="{{topicData.pic_list}}" class="flex-item-0 mb20 mr20" mode="aspectFill" src="{{item}}" style="width: 200rpx;height:200rpx"></image>
+      </block>
+    </view>
+    <view class='topic-share-view mt20 flex'>
+      <view class='flex-item-0'>
+        <!-- <text class='f999 fs28'>进行中</text> -->
+      </view>
+      <view class='flex-item-1'>
+        <view class='share-view flex flex-x-right '>
+
+          <view class='flex-item-0 flex-x-right mr40 '>
+            <icon style='font-size:40rpx;height:60rpx;line-height:60rpx; padding-top:2px;' data-mode="topic" data-id="{{id}}" catchtap='commentFn' class='c-d-i iconfont icon-pinglun f999'></icon>
+          </view>
+          <view class='flex-item-0 flex-x-center mr40 flex-y-center'>
+            <icon style='padding-top:5rpx; font-size:48rpx;height:60rpx;line-height:58rpx;' data-mode="live" data-id="{{id}}" catchtap='dzFn' class="c-d-i iconfont icon-dianzan1 {{topicData.praise_status=='1'?'activeDz':''}} active-icon-pinglun f999">
+              <text class='comment-num'>{{topicData.praise_num}}</text>
+            </icon>
+          </view>
+          <navigator wx:if="{{topicData.is_open=='1'}}" class='flex-item-0 ' url="{{'/active/share-active/share-active?id='+id+'&cid='+cid+'&atype='+atype}}" hover-class="none">
+            <icon style='font-size:40rpx;height:60rpx;line-height:60rpx;' class='c-d-i iconfont icon-fenxiang1 f999'></icon>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='comment-view mt40'>
+    <view class='comment-view-title f333  pb10'>全部评论 {{commentInfo.row_count}}</view>
+    <comment bind:dzevent="dzFn"  bind:commentevent="commentevent" nameList="{{namelist}}" commentList="{{commentList}}"  loadingstutas="{{loadingstutas}}"></comment>
+
+  </view>
+
+
+</view>
+<view class='comment-input-view '>
+  <form class='comment-input-form ' bindsubmit='sumbitComment'>
+    <view class='flex'>
+      <textarea rows="1" focus='{{isFoucsComment}}' value='{{textValue}}' cursor-spacing="15" fixed="true" name="text" adjust-position="true" class='t-textarea flex-item-1 mr20' bindblur="bindTextAreaBlur" bindconfirm="sumbitComment" />
+      <button form-type='submit' class='flex-item-0 btn-primary comment-send-btn'>发送</button>
+    </view>
+  </form>
+</view>
+</view>

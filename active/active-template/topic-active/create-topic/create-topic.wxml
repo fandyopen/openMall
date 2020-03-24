@@ -1,0 +1,36 @@
+<include src="/components/common/common"></include>
+<view class='community-list-view topic-view'>
+  <form bindsubmit='{{id?"editActive":"creatActive"}}'>
+    <!-- <view class='topic-title mb30'>
+      <input type='text' name="name" class='topic-title-input' placeholder='请输入话题名称'></input>
+    </view> -->
+    <view class="textarea-section mb40">
+      <textarea auto-height="true" name="content" maxlength="-1" adjust-position="true" show-confirm-bar="true" class='t-textarea'  placeholder="请输入话题内容..." />
+      <view class='add-image-view pt20'>
+        <view class="image-list flex">
+          <view class="image-preview mr20 flex-item-0 mb20" data-index="{{index}}" wx:for="{{pic_list}}">
+            <text  bindtap="deleteImage" class="flex-x-center flex-y-center image-del iconfont icon-x" data-index="{{index}}" data-type="1">
+                    </text>
+            <image  catchtap="imgYu"  data-src="{{item}}"  data-list="{{pic_list}}" mode="aspectFill" src="{{item}}" style="width: 160rpx;height: 160rpx"></image>
+          </view>
+          <view bindtap="chooseImage" class="image-picker flex-item-0" data-type="1">
+          <icon class='iconfont icon-addpictures fs110 f999'></icon>
+            <!-- <image src="/images/cart_no_add.png" style="width: 160rpx;height: 160rpx"></image> -->
+          </view>
+        </view>
+
+
+      </view>
+    </view>
+
+
+
+
+    <view class='topic-btn-view'>
+      <button form-type='submit' class='btn-green'>发布</button>
+ <text>{{url}}</text>
+    </view>
+
+  </form>
+
+</view>
